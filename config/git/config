@@ -1,0 +1,8 @@
+[include]
+    path = ./config.local
+[core]
+    editor = code --wait
+[alias]
+    co = checkout
+    c  = commit
+    br = branch
