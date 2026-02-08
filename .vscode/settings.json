@@ -1,0 +1,28 @@
+{
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "nixd": {
+      "nixpkgs": {
+        "expr": "import (builtins.getFlake \"${workspaceFolder}\").inputs.nixpkgs { }"
+      },
+      "options": {
+        "nix-darwin": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").darwinConfigurations.gabi.options"
+        },
+        "home-manager-darwin": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").darwinConfigurations.gabi.options.home-manager.users.type.getSubOptions []"
+        },
+        "flake-parts": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").debug.options"
+        },
+        "flake-parts2": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").currentSystem.options"
+        },
+        "nixpkgs": {
+          "expr": "{ lib = (builtins.getFlake \"${workspaceFolder}\").inputs.nixpkgs.lib; }"
+        }
+      }
+    }
+  }
+}
