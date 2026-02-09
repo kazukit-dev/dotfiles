@@ -5,10 +5,9 @@
 }:
 {
   imports = [
-    ./packages.nix
+    ./homebrew.nix
     ./system.nix
   ];
-
   users.users.${username} = {
     home = homedir;
   };

@@ -8,7 +8,7 @@
       zsh
     ];
     file = {
-      ".zshenv" = ../../../../home/.zshenv;
+      ".zshenv".source = ../../../home/.zshenv;
     };
   };
 
