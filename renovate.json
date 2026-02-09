@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "nix": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 3am on Monday"]
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["nix"],
+      "groupName": "nix dependencies",
+      "automerge": false,
+      "labels": ["dependencies", "nix"]
+    }
+  ],
+  "semanticCommits": "enabled",
+  "commitMessagePrefix": "chore(deps):",
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 10
+}
