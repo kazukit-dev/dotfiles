@@ -11,6 +11,11 @@
   users.users.${username} = {
     home = homedir;
   };
-  # Disable nix-darwin's Nix management (using Determinate Nix)
-  nix.enable = false;
+  # Configure Determinate Nix with automatic garbage collection
+  determinateNix = {
+    enable = true;
+    determinateNixd = {
+      garbageCollector.strategy = "automatic";
+    };
+  };
 }

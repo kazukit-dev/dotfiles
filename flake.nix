@@ -28,6 +28,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -134,6 +135,7 @@
         darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
           inherit system;
           modules = [
+            inputs.determinate.darwinModules.default
             (import ./nix/darwin { inherit username homedir; })
             home-manager.darwinModules.home-manager
             {
