@@ -32,9 +32,14 @@
       flake-parts,
       treefmt-nix,
       git-hooks-nix,
+      nix-darwin,
+      home-manager,
       ...
     }:
     let
+      system = "aarch64-darwin";
+      username = "kazuki";
+      homedir = "/Users/${username}";
       hostname = "gabi";
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
@@ -121,6 +126,28 @@
 
         };
 
-      flake = { };
+      flake = {
+        darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            (import ./nix/darwin { inherit username homedir; })
+            home-manager.darwinModules.home-manager
+            {
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.overlays = [
+                inputs.claude-code-overlay.overlays.default
+              ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${username} = import ./nix/home;
+                extraSpecialArgs = {
+                  inherit username homedir;
+                };
+              };
+            }
+          ];
+        };
+      };
     };
 }
