@@ -24,6 +24,10 @@
       url = "github:ryoppippi/claude-code-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
@@ -143,6 +147,7 @@
                 users.${username} = import ./nix/home;
                 extraSpecialArgs = {
                   inherit username homedir;
+                  inherit inputs;
                 };
               };
             }
