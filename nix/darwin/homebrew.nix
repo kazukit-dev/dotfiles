@@ -28,6 +28,8 @@ _: {
       "claude"
       # Font
       "font-hack-nerd-font"
+      # AI-powered translator
+      "nani"
     ];
 
     masApps = {
