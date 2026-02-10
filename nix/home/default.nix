@@ -2,6 +2,8 @@
   username,
   homedir,
   inputs,
+  lib,
+  config,
   ...
 }:
 {
@@ -20,4 +22,8 @@
 
   # nix-index-database: weekly updated package search database
   programs.nix-index-database.comma.enable = true;
+
+  home.activation.createScreenShotsDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "${config.home.homeDirectory}/Pictures/Screenshots"
+  '';
 }
