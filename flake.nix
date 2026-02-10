@@ -63,9 +63,14 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
+              # Nix
               nixfmt.enable = true;
-              oxfmt.enable = true;
+              # Shell
               shfmt.enable = true;
+              # Toml
+              taplo.enable = true;
+              # Yaml
+              yamlfmt.enable = true;
             };
           };
 
