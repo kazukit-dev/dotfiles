@@ -13,12 +13,13 @@
 
       # CLI Tools
       curl # HTTP client
-      eza # Modern replacement for ls with colors and git integration
+      eza # Modern replacement for ls with colors
       jq # Command-line JSON processor
       lazygit # Terminal UI for git commands
       zoxide # Smarter cd command that learns your habits
       tree # Directory tree visualization
       fzf # Fuzzy finder for command-line
+      gh # GitHub CLI
 
       # File Manager
       yazi # file manager
