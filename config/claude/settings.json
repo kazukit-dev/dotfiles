@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "language": "japanese",
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git branch)",
+      "Bash(git branch -l *)",
+      "Bash(git remote -v)",
+      "Bash(git add *)",
+
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(cd *)",
+      "Bash(tree *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(chmod *)",
+
+      "Bash(rm -r *)",
+      "Bash(rm -rf *)",
+
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)",
+      "Bash(git clean -fd *)",
+
+      "Read(**/id_rsa)",
+      "Read(**/id_ed25519)",
+      "Read(**/.env*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+
+      "Edit(**/.env*)",
+      "Edit(~/.ssh/**)",
+      "Edit(~/.aws/**)",
+
+      "Write(**/.env*)",
+      "Write(~/.ssh/**)",
+      "Write(~/.aws/**)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git stash *)",
+      "Bash(rm *)"
+    ]
+  }
+}
