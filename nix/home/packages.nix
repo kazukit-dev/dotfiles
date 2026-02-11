@@ -20,6 +20,12 @@
       tree # Directory tree visualization
       fzf # Fuzzy finder for command-line
 
+      # File Manager
+      yazi # file manager
+      file # file type detection
+      fd # file searching
+      rg # file content searching
+
       # Languages
       nodejs_24 # JavaScript runtime
       python3 # Python interpreter
