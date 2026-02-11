@@ -71,6 +71,16 @@
               taplo.enable = true;
               # Yaml
               yamlfmt.enable = true;
+              # JavaScript
+              oxfmt = {
+                enable = true;
+                includes = [
+                  "*.js"
+                  "*.ts"
+                  "*.json"
+                  "*.jsonc"
+                ];
+              };
             };
           };
 
