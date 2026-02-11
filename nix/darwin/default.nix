@@ -7,6 +7,7 @@
   imports = [
     ./homebrew.nix
     ./system.nix
+    ./fonts.nix
   ];
   users.users.${username} = {
     home = homedir;

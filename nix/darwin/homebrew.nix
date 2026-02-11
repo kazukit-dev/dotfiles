@@ -26,8 +26,6 @@ _: {
       "raycast"
       # AI
       "claude"
-      # Font
-      "font-hack-nerd-font"
       # AI-powered translator
       "nani"
     ];
