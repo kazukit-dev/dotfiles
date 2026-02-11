@@ -1,7 +1,6 @@
 ---
 name: commit
 description: Analyze staged changes and create a detailed git commit message in English
-model: haiku
 metadata:
   author: kazukit
   version: 0.1.0
@@ -17,11 +16,7 @@ Use Conventional Commits format:
 <type>[optional scope]: <description>
 
 [optional body]
-
-Co-Authored-By: Claude <model> <noreply@anthropic.com>
 ```
-
-Replace `<model>` with the actual model name (e.g., `Opus 4.5`, `Sonnet 4`, `Haiku 3.5`).
 
 **Types:**
 
