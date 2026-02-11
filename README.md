@@ -30,8 +30,8 @@ This repository provides a declarative and reproducible development environment 
 
    ```sh
    ./scripts/setup-git-signing.sh
-   git config --global user.name "your name"
-   git config --global user.email "your email"
+   git config --file ~/.config/git/config.local user.name "your name"
+   git config --file ~/.config/git/config.local user.email "your email"
    ```
 
 ## Available Nix Apps
