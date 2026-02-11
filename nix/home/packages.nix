@@ -24,7 +24,7 @@
       yazi # file manager
       file # file type detection
       fd # file searching
-      rg # file content searching
+      ripgrep # file content searching
 
       # Languages
       nodejs_24 # JavaScript runtime
