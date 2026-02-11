@@ -1,3 +1,6 @@
+# CLI tools and development environment packages
+# Installed via Nixpkgs (cross-platform CLI tools)
+# For GUI apps and macOS-specific tools, see nix/darwin/homebrew.nix
 {
   pkgs,
   ...
@@ -5,17 +8,28 @@
 {
   home = {
     packages = with pkgs; [
-      curl
-      awscli2
-      jq
-      tree
-      pnpm
-      nodejs_24
-      eza # modern ls alternative
-      zoxide # smarter cd command
-      fzf # fuzzy finder for zoxide
-      lazygit # terminal UI for git
-      nixd # nix lsp server
+      # Cloud & Infrastructure
+      awscli2 # AWS command line interface
+
+      # CLI Tools
+      curl # HTTP client
+      eza # Modern replacement for ls with colors and git integration
+      jq # Command-line JSON processor
+      lazygit # Terminal UI for git commands
+      zoxide # Smarter cd command that learns your habits
+      tree # Directory tree visualization
+      fzf # Fuzzy finder for command-line
+
+      # Languages
+      nodejs_24 # JavaScript runtime
+      python3 # Python interpreter
+
+      # Language Servers
+      nixd # Nix language server
+
+      # Package Managers
+      pnpm # Node.js package manager
+      uv # Python package installer
     ];
   };
 }
