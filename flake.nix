@@ -114,7 +114,7 @@
               program = toString (
                 pkgs.writeShellScript "update" ''
                   set -e
-                  echo "Updating fake.lock..."
+                  echo "Updating flake.lock..."
                   nix flake update
                   echo "Done!"
                 ''
