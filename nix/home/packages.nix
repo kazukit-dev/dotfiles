@@ -34,6 +34,7 @@
       nixd # Nix language server
 
       # Package Managers
+      bun # JavaScript runtime and package manager
       pnpm # Node.js package manager
       uv # Python package installer
     ];
