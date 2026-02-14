@@ -2,9 +2,15 @@
   description = "kazukit's Nix configuration";
 
   nixConfig = {
-    extra-substituters = [ "https://ryoppippi.cachix.org" ];
+    extra-substituters = [
+      "https://kazukit.cachix.org"
+      "https://ryoppippi.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
     extra-trusted-public-keys = [
+      "kazukit.cachix.org-1:pL0zV9aaRVYz0wdxKhfwFXISwTDb10wK7hxbuaxL93Q="
       "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
 
