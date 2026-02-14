@@ -31,7 +31,6 @@ _: {
     ];
 
     masApps = {
-      "Magnet" = 441258766;
       "RunCat" = 1429033973;
       "Amazon Prime Video" = 545519333;
     };
