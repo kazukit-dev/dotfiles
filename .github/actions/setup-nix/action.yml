@@ -1,0 +1,21 @@
+name: Setup Nix
+description: Setup nix using cachix
+inputs:
+  cachixAuthToken:
+    description: Cachix auth token
+    required: false
+  skipPush:
+    description: Skip push to cachix
+    required: false
+runs:
+  using: composite
+  steps:
+    - name: Install Nix
+      uses: cachix/install-nix-action@4e002c8ec80594ecd40e759629461e26c8abed15 # v31.9.0
+    - name: Setup cachix
+      uses: cachix/cachix-action@3ba601ff5bbb07c7220846facfa2cd81eeee15a1 # v16
+      with:
+        name: kazukit
+        authToken: ${{ inputs.cachixAuthToken }}
+        skipPush: ${{ inputs.skipPush }}
+        extraPullNames: "ryoppippi,nix-community"
