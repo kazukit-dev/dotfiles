@@ -2,7 +2,7 @@ name: Auto-update flake.lock
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0' # runs weekly on Sunday at 00:00
+    - cron: '0 0 */3 * *' # runs every 3 days at 00:00
 jobs:
   update-flake-inputs:
     runs-on: ubuntu-latest
