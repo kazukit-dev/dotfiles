@@ -5,7 +5,6 @@ on:
     paths:
       - '**.nix'
       - flake.lock
-  pull_request:
 jobs:
   build-macos:
     runs-on: macos-26
