@@ -26,4 +26,4 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           sign-commits: true
           commit-message: "chore(flake): update dependencies"
-          title: "chore(flake): update flake.lock"
+          title: "Automated flake.lock update"
