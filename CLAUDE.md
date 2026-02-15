@@ -34,3 +34,7 @@ Personal dotfiles configuration managed with Nix, nix-darwin, and home-manager.
 - `nix run .#switch` - Apply nix-darwin and home-manager configuration changes
 - `nix run .#update` - Update flake.lock dependencies
 - `nix run .#secrets` - Scan repository for hardcoded secrets using gitleaks
+
+## Useful Nix Tools
+
+- `nix run nixpkgs#pinact` - Pin GitHub Actions versions to specific commit SHAs (e.g. `actions/checkout@v4` → `actions/checkout@<commit-hash> # v4`)
