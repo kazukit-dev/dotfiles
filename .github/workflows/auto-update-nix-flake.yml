@@ -1,4 +1,4 @@
-name: Automatic update to nix flake.lock
+name: Auto-update flake.lock
 on:
   workflow_dispatch:
   schedule:
@@ -26,3 +26,4 @@ jobs:
           token: ${{ steps.app-token.outputs.token }}
           sign-commits: true
           commit-message: "chore(flake): update dependencies"
+          title: "chore(flake): update flake.lock"

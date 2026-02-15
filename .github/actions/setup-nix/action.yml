@@ -1,11 +1,11 @@
 name: Setup Nix
-description: Setup nix using cachix
+description: Set up Nix with Cachix
 inputs:
   cachixAuthToken:
-    description: Cachix auth token
+    description: Auth token for pushing to Cachix binary cache
     required: false
   skipPush:
-    description: Skip push to cachix
+    description: Whether to skip pushing store paths to Cachix
     required: false
 runs:
   using: composite
