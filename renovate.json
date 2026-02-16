@@ -10,6 +10,12 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": ["claude-code-overlay"],
+      "schedule": ["before 3am on weekday"],
+      "automerge": false,
+      "labels": ["dependencies", "nix", "claude-code"]
+    },
+    {
       "matchManagers": ["nix"],
       "groupName": "nix dependencies",
       "automerge": false,
