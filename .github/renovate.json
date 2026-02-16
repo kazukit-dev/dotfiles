@@ -1,25 +1,26 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  "timezone": "Asia/Tokyo",
   "nix": {
     "enabled": true
   },
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["before 3am on Monday"]
+    "schedule": ["before 3am on Sunday"]
   },
+  "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchPackageNames": ["claude-code-overlay"],
-      "schedule": ["before 3am on weekday"],
-      "automerge": false,
-      "labels": ["dependencies", "nix", "claude-code"]
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "labels": ["nix"]
     },
     {
-      "matchManagers": ["nix"],
-      "groupName": "nix dependencies",
+      "matchPackageNames": ["claude-code-overlay"],
+      "schedule": ["every weekday before 3am"],
+      "description": "Claude Code overlay updates on weekdays before 3 AM",
       "automerge": false,
-      "labels": ["dependencies", "nix"]
+      "labels": ["claude-code"]
     }
   ],
   "semanticCommits": "enabled",
