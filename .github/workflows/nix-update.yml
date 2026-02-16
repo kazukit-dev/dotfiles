@@ -14,6 +14,13 @@ jobs:
           skipPush: true
       - name: Update flake.lock
         run: nix flake update
+      - name: Get flake.lock diff
+        id: diff
+        run: |
+          delimiter="$(openssl rand -hex 8)"
+          echo "content<<${delimiter}" >> "$GITHUB_OUTPUT"
+          git diff flake.lock >> "$GITHUB_OUTPUT"
+          echo "${delimiter}" >> "$GITHUB_OUTPUT"
       - name: Create GitHub App token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: app-token
@@ -27,3 +34,17 @@ jobs:
           sign-commits: true
           commit-message: "chore(flake): update dependencies"
           title: "Automated flake.lock update"
+          body: |
+            Automated update of flake.lock inputs.
+
+            <details>
+            <summary>flake.lock diff</summary>
+
+            ```diff
+            ${{ steps.diff.outputs.content }}
+            ```
+
+            </details>
+          labels: |
+            dependencies
+            automated
