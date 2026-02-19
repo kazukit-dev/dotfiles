@@ -1,4 +1,4 @@
-name: Update flake.lock
+name: Update flake lock all
 on:
   workflow_dispatch:
 jobs:
@@ -45,5 +45,4 @@ jobs:
             </details>
           labels: |
             dependencies
-            automated
             nix
