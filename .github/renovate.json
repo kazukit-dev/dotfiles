@@ -9,23 +9,10 @@
     "enabled": true,
     "schedule": ["before 3am on Sunday"]
   },
-  "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchPackagePrefixes": ["https://flakehub.com/"],
-      "enabled": false,
-      "description": "Disable FlakeHub URLs (Renovate does not support them)"
-    },
-    {
       "matchUpdateTypes": ["lockFileMaintenance"],
-      "labels": ["nix"]
-    },
-    {
-      "matchPackageNames": ["claude-code-overlay"],
-      "schedule": ["every weekday before 3am"],
-      "description": "Claude Code overlay updates on weekdays before 3 AM",
-      "automerge": false,
-      "labels": ["claude-code"]
+      "labels": ["dependencies", "nix"]
     }
   ],
   "semanticCommits": "enabled",
