@@ -1,0 +1,119 @@
+name: Update flake lock
+description: Check and update flake inputs, creating a PR if updates are available
+inputs:
+  targets:
+    description: Space-separated list of flake inputs to update
+    required: true
+  github-token:
+    description: GitHub token for API access
+    required: true
+  pr-app-id:
+    description: GitHub App ID for creating tokens
+    required: true
+  pr-app-private-key:
+    description: GitHub App private key for creating tokens
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Check for updates
+      id: check
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+      run: |
+        get_locked_info() {
+          local input="$1"
+          local node_name
+          node_name=$(jq -r ".nodes.root.inputs[\"$input\"]" flake.lock)
+          local owner repo rev ref
+          owner=$(jq -r ".nodes[\"$node_name\"].locked.owner" flake.lock)
+          repo=$(jq -r ".nodes[\"$node_name\"].locked.repo" flake.lock)
+          rev=$(jq -r ".nodes[\"$node_name\"].locked.rev" flake.lock)
+          ref=$(jq -r ".nodes[\"$node_name\"].original.ref // empty" flake.lock)
+          echo "$owner $repo $rev $ref"
+        }
+
+        NEEDS_UPDATE=""
+
+        for input in ${{ inputs.targets }}; do
+          read -r owner repo locked_rev ref <<< "$(get_locked_info "$input")"
+          target_ref="${ref:-HEAD}"
+          latest_rev=$(gh api "repos/$owner/$repo/commits/$target_ref" --jq '.sha')
+
+          if [ "$locked_rev" != "$latest_rev" ]; then
+            echo "$input: $locked_rev -> $latest_rev"
+            NEEDS_UPDATE="${NEEDS_UPDATE:+$NEEDS_UPDATE }$input"
+          else
+            echo "$input: up to date ($locked_rev)"
+          fi
+        done
+
+        echo "needs_update=$NEEDS_UPDATE" >> "$GITHUB_OUTPUT"
+    - name: Update inputs
+      if: steps.check.outputs.needs_update != ''
+      id: update
+      shell: bash
+      run: |
+        get_rev() {
+          local input="$1"
+          local node_name
+          node_name=$(jq -r ".nodes.root.inputs[\"$input\"]" flake.lock)
+          jq -r ".nodes[\"$node_name\"].locked.rev" flake.lock
+        }
+
+        SUMMARY=""
+
+        for input in ${{ steps.check.outputs.needs_update }}; do
+          old_rev=$(get_rev "$input")
+          nix flake update "$input"
+          new_rev=$(get_rev "$input")
+          SUMMARY="${SUMMARY}- **${input}**: \`${old_rev:0:7}\` → \`${new_rev:0:7}\`"$'\n'
+        done
+
+        delimiter="$(openssl rand -hex 8)"
+        echo "summary<<${delimiter}" >> "$GITHUB_OUTPUT"
+        echo "$SUMMARY" >> "$GITHUB_OUTPUT"
+        echo "${delimiter}" >> "$GITHUB_OUTPUT"
+
+        UPDATED="${{ steps.check.outputs.needs_update }}"
+        echo "title=chore(deps): update ${UPDATED// /, }" >> "$GITHUB_OUTPUT"
+    - name: Get flake.lock diff
+      if: steps.check.outputs.needs_update != ''
+      id: diff
+      shell: bash
+      run: |
+        delimiter="$(openssl rand -hex 8)"
+        echo "content<<${delimiter}" >> "$GITHUB_OUTPUT"
+        git diff flake.lock >> "$GITHUB_OUTPUT"
+        echo "${delimiter}" >> "$GITHUB_OUTPUT"
+    - name: Create GitHub App token
+      if: steps.check.outputs.needs_update != ''
+      uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+      id: app-token
+      with:
+        app-id: ${{ inputs.pr-app-id }}
+        private-key: ${{ inputs.pr-app-private-key }}
+    - name: Create Pull Request
+      if: steps.check.outputs.needs_update != ''
+      uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+      with:
+        token: ${{ steps.app-token.outputs.token }}
+        sign-commits: true
+        commit-message: "${{ steps.update.outputs.title }}"
+        title: "${{ steps.update.outputs.title }}"
+        body: |
+          ## Updated inputs
+
+          ${{ steps.update.outputs.summary }}
+          <details>
+          <summary>flake.lock diff</summary>
+
+          ```diff
+          ${{ steps.diff.outputs.content }}
+          ```
+
+          </details>
+        labels: |
+          dependencies
+          nix
