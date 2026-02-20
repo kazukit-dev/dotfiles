@@ -23,6 +23,7 @@ _: {
       # Note
       "obsidian"
       # Utilities
+      "karabiner-elements"
       "raycast"
       # AI
       "claude"
