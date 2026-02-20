@@ -20,3 +20,4 @@ jobs:
           github-token: ${{ github.token }}
           pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
           pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
+          auto-merge: "true"

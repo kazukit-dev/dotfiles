@@ -61,7 +61,13 @@
         git-hooks-nix.flakeModule
       ];
 
-      systems = [ "aarch64-darwin" ];
+      # aarch64-linux is needed for CI (GitHub Actions ARM runner).
+      # perSystem outputs like treefmt formatter are system-dependent,
+      # so the runner's architecture must be listed here.
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+      ];
 
       perSystem =
         { config, pkgs, ... }:
