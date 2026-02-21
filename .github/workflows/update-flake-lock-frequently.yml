@@ -16,7 +16,7 @@ jobs:
           skipPush: true
       - uses: ./.github/actions/update-flake-lock
         with:
-          targets: claude-code-overlay
+          targets: llm-agents
           github-token: ${{ github.token }}
           pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
           pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}

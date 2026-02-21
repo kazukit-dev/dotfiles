@@ -4,8 +4,8 @@
 }:
 {
   home = {
-    packages = with pkgs; [
-      claude-code
+    packages = [
+      pkgs.llm-agents.claude-code
     ];
   };
   xdg.configFile = {

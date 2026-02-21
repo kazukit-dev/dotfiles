@@ -4,13 +4,11 @@
   nixConfig = {
     extra-substituters = [
       "https://kazukit.cachix.org"
-      "https://ryoppippi.cachix.org"
       "https://nix-community.cachix.org"
       "https://cache.numtide.com"
     ];
     extra-trusted-public-keys = [
       "kazukit.cachix.org-1:pL0zV9aaRVYz0wdxKhfwFXISwTDb10wK7hxbuaxL93Q="
-      "ryoppippi.cachix.org-1:b2LbtWNvJeL/qb1B6TYOMK+apaCps4SCbzlPRfSQIms="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
@@ -28,8 +26,8 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    claude-code-overlay = {
-      url = "github:ryoppippi/claude-code-overlay";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
@@ -170,7 +168,7 @@
             {
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
-                inputs.claude-code-overlay.overlays.default
+                inputs.llm-agents.overlays.default
               ];
               home-manager = {
                 useGlobalPkgs = true;
