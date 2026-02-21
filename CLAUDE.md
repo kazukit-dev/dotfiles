@@ -17,6 +17,11 @@ When editing GitHub Actions workflows:
 - CI runs on `macos-latest` (build) and `ubuntu-24.04-arm` (format check)
 - Cachix is used for binary caching (cache name: `kazukit`)
 
+## home-manager Conventions
+
+- `xdg.configFile` with `recursive = true` does not apply `executable = true` to individual files
+- Place executable scripts in `scripts/` and create separate `xdg.configFile` entries with `executable = true` (see `claude-code.nix` for example)
+
 ## Git Conventions
 
 - Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
