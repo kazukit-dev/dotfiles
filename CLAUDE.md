@@ -2,6 +2,10 @@
 
 See @README.md for project overview, architecture, and available commands.
 
+## Important
+
+- **Never edit `~/.config/` directly.** All config files are symlinked from this dotfiles repo. Always edit files under `dotfiles/config/` instead.
+
 ## Nix Code Conventions
 
 - Format with `nixfmt` (enforced by pre-commit and CI)
