@@ -11,6 +11,10 @@ See @README.md for project overview, architecture, and available commands.
 - Format with `nixfmt` (enforced by pre-commit and CI)
 - Follow XDG Base Directory standard for all config paths
 
+## AI Agent Packages
+
+Install AI agent packages through the `llm-agents` flake input, which keeps them up to date with the latest releases. Reference packages as `pkgs.llm-agents.<package>`.
+
 ## GitHub Actions
 
 When editing GitHub Actions workflows:
