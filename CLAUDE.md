@@ -1,40 +1,23 @@
-# dotfiles
+## Quick Reference
 
-Personal dotfiles configuration managed with Nix, nix-darwin, and home-manager.
+See @README.md for project overview, architecture, and available commands.
 
-## Key Features
+## Nix Code Conventions
 
-- **Nix** - Functional package manager for reproducible system configuration
-- **nix-darwin** - Nix-based configuration management for macOS system settings
-- **home-manager** - Declarative dotfile and user environment management
+- Format with `nixfmt` (enforced by pre-commit and CI)
+- Follow XDG Base Directory standard for all config paths
 
-## Architecture
+## GitHub Actions
 
-```
-├── config/              # Application configurations (symlinked to "$HOME/.config")
-├── home/                # Files to be placed in "$HOME"
-│   └── .zshenv          # Zsh environment variables
-├── flake.lock
-├── flake.nix            # Main flake configuration with apps and pre-commit hooks
-├── nix/
-│   ├── darwin/          # nix-darwin configuration
-│   │   ├── default.nix
-│   │   ├── homebrew.nix # Homebrew packages (GUI apps and macOS-specific tools)
-│   │   └── system.nix   # macOS system settings
-│   └── home/            # home-manager configuration
-│       ├── default.nix
-│       ├── modules/     # Modular configuration for tools (git, zsh, etc.)
-│       └── packages.nix # Nixpkgs packages (CLI tools)
-└── scripts/
-    └── setup-git-signing.sh
-```
+When editing GitHub Actions workflows:
 
-## Available Nix Apps
+- Pin action versions to commit SHAs using `pinact`:
+  `nix run nixpkgs#pinact`
+  (e.g. `actions/checkout@v4` -> `actions/checkout@<sha> # v4`)
+- CI runs on `macos-latest` (build) and `ubuntu-24.04-arm` (format check)
+- Cachix is used for binary caching (cache name: `kazukit`)
 
-- `nix run .#switch` - Apply nix-darwin and home-manager configuration changes
-- `nix run .#update` - Update flake.lock dependencies
-- `nix run .#secrets` - Scan repository for hardcoded secrets using gitleaks
+## Git Conventions
 
-## Useful Nix Tools
-
-- `nix run nixpkgs#pinact` - Pin GitHub Actions versions to specific commit SHAs (e.g. `actions/checkout@v4` → `actions/checkout@<commit-hash> # v4`)
+- Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/)
+- Common scopes: `config`, `ci`, `deps`, `darwin`, `home`, `claude` etc
