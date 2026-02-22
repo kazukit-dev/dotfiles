@@ -127,4 +127,4 @@ runs:
       shell: bash
       env:
         GH_TOKEN: ${{ steps.app-token.outputs.token }}
-      run: gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash
+      run: gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash --delete-branch
