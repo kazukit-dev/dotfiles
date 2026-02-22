@@ -8,3 +8,5 @@ export XDG_STATE_HOME=$HOME/.local/state
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 # Claude Code settings
 export CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
+# Gemini cli settings
+export GEMINI_CLI_HOME=$XDG_CONFIG_HOME/gemini
