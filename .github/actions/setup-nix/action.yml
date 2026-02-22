@@ -22,4 +22,4 @@ runs:
         name: kazukit
         authToken: ${{ inputs.cachixAuthToken }}
         skipPush: ${{ inputs.skipPush }}
-        extraPullNames: "ryoppippi,nix-community"
+        extraPullNames: "nix-community"
