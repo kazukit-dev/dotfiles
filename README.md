@@ -26,10 +26,10 @@ This repository provides a declarative and reproducible development environment 
    sudo nix run nix-darwin -- switch --flake .#<hostname>
    ```
 
-4. Setup git signing config:
+4. Setup git signing key:
 
    ```sh
-   ./scripts/setup-git-signing.sh
+   ./scripts/setup-git-signing-key.sh
    git config --file ~/.config/git/config.local user.name "your name"
    git config --file ~/.config/git/config.local user.email "your email"
    ```

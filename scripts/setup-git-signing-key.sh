@@ -34,9 +34,9 @@ read VAULT
 VAULT="${VAULT:-dev}"
 
 # Get item (ID or name)
-echo -e "${BLUE}Enter 1Password item ID or name [default: GitHubSigningKey]:${NC} "
+echo -e "${BLUE}Enter 1Password item ID or name [default: Git Signing Key]:${NC} "
 read ITEM_REF
-ITEM_REF="${ITEM_REF:-GitHubSigningKey}"
+ITEM_REF="${ITEM_REF:-Git Signing Key}"
 
 if [ -z "$ITEM_REF" ]; then
   echo -e "${RED}Error: Item ID or name cannot be empty${NC}"

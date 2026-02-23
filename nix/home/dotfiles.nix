@@ -15,11 +15,12 @@ in
   };
 
   xdg.configFile = {
+    # 1password
+    "1Password/ssh".source = mkLink "config/1Password/ssh";
     # Claude Code
     "claude/settings.json".source = mkLink "config/claude/settings.json";
     "claude/statusline.sh".source = mkLink "config/claude/statusline.sh";
     "claude/skills".source = mkLink "config/claude/skills";
-
     # Ghostty
     "ghostty".source = mkLink "config/ghostty";
     # Zsh
