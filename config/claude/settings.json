@@ -1,10 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "language": "japanese",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.config/claude/statusline.sh"
-  },
   "permissions": {
     "allow": [
       "Bash(git status)",
@@ -15,7 +10,6 @@
       "Bash(git branch -l *)",
       "Bash(git remote -v)",
       "Bash(git add *)",
-
       "Bash(ls *)",
       "Bash(pwd)",
       "Bash(cd *)",
@@ -28,26 +22,21 @@
       "Bash(sudo *)",
       "Bash(curl *)",
       "Bash(chmod *)",
-
       "Bash(rm -r *)",
       "Bash(rm -rf *)",
-
       "Bash(git push --force *)",
       "Bash(git push -f *)",
       "Bash(git reset --hard *)",
       "Bash(git clean -f *)",
       "Bash(git clean -fd *)",
-
       "Read(**/id_rsa)",
       "Read(**/id_ed25519)",
       "Read(**/.env*)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
-
       "Edit(**/.env*)",
       "Edit(~/.ssh/**)",
       "Edit(~/.aws/**)",
-
       "Write(**/.env*)",
       "Write(~/.ssh/**)",
       "Write(~/.aws/**)"
@@ -64,5 +53,10 @@
       "Bash(git stash *)",
       "Bash(rm *)"
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.config/claude/statusline.sh"
+  },
+  "language": "japanese"
 }

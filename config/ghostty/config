@@ -35,5 +35,7 @@ mouse-hide-while-typing = true
 resize-overlay = never
 
 # Background
-background-opacity = 0.80
+background-opacity = 0.8
 background-blur = 20
+
+unfocused-split-opacity = 0.3
