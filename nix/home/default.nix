@@ -16,7 +16,7 @@
 
   imports = [
     inputs.nix-index-database.homeModules.nix-index
-    ./modules
+    ./dotfiles.nix
     ./packages.nix
   ];
 

@@ -49,7 +49,7 @@ This repository provides a declarative and reproducible development environment 
 │   │   └── system.nix   # macOS system settings
 │   └── home/            # home-manager configuration
 │       ├── default.nix
-│       ├── modules/     # Modular configuration for tools (git, zsh, etc.)
+│       ├── dotfiles.nix # Symlink definitions for config files
 │       └── packages.nix # Nixpkgs packages (CLI tools)
 └── scripts/
     └── setup-git-signing.sh

@@ -20,6 +20,7 @@
         zoxide # Smarter cd command that learns your habits
         tree # Directory tree visualization
         fzf # Fuzzy finder for command-line
+        git # version control
 
         # File Manager
         yazi # file manager
@@ -38,8 +39,14 @@
         bun # JavaScript runtime and package manager
         pnpm # Node.js package manager
         uv # Python package installer
+
+        # Shell
+        zsh # Z shell
+        starship # Cross-shell prompt
+        sheldon # Shell plugin manager
       ])
       ++ (with pkgs.llm-agents; [
+        claude-code # Anthropic Claude Code CLI
         gemini-cli # Google Gemini CLI
       ]);
   };
