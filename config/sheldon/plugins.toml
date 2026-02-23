@@ -17,3 +17,10 @@ apply = ["defer"]
 [plugins.fast-syntax-highlighting]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
+
+[plugins.compinit]
+inline = '''
+autoload -Uz compinit
+[[ -d "${XDG_CACHE_HOME}/zsh" ]] || mkdir -p "${XDG_CACHE_HOME}/zsh"
+compinit -d "${XDG_CACHE_HOME}/zsh/zcompdump"
+'''
