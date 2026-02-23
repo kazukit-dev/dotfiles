@@ -1,49 +1,34 @@
 # Symlink dotfiles from this repository to the appropriate locations.
-# Application configs go to "$HOME/.config" via xdg.configFile,
-# and home directory files go to "$HOME" via home.file.
+# Uses mkOutOfStoreSymlink to create direct symlinks to the repository,
+# so changes take effect immediately without running `nix run .#switch`.
+{
+  config,
+  ...
+}:
+let
+  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
+  mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/${path}";
+in
 {
   home.file = {
-    ".zshenv".source = ../../home/.zshenv;
+    ".zshenv".source = mkLink "home/.zshenv";
   };
 
   xdg.configFile = {
     # Claude Code
-    claude = {
-      source = ../../config/claude;
-      recursive = true;
-    };
-    # xdg.configFile with recursive + executable doesn't work,
-    # so scripts are placed individually with executable = true.
-    "claude/statusline.sh" = {
-      source = ../../scripts/claude-statusline.sh;
-      executable = true;
-    };
+    "claude/settings.json".source = mkLink "config/claude/settings.json";
+    "claude/statusline.sh".source = mkLink "config/claude/statusline.sh";
+    "claude/skills".source = mkLink "config/claude/skills";
 
     # Ghostty
-    ghostty = {
-      source = ../../config/ghostty;
-      recursive = true;
-    };
-
+    "ghostty".source = mkLink "config/ghostty";
     # Zsh
-    zsh = {
-      source = ../../config/zsh;
-      recursive = true;
-    };
-
+    "zsh".source = mkLink "config/zsh";
     # Git
-    git = {
-      source = ../../config/git;
-      recursive = true;
-    };
-
+    "git".source = mkLink "config/git";
     # Starship
-    "starship.toml".source = ../../config/starship.toml;
-
+    "starship.toml".source = mkLink "config/starship.toml";
     # Sheldon
-    sheldon = {
-      source = ../../config/sheldon;
-      recursive = true;
-    };
+    "sheldon".source = mkLink "config/sheldon";
   };
 }
