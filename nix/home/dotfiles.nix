@@ -31,5 +31,7 @@ in
     "starship.toml".source = mkLink "config/starship.toml";
     # Sheldon
     "sheldon".source = mkLink "config/sheldon";
+    # Gomi
+    "gomi".source = mkLink "config/gomi";
   };
 }

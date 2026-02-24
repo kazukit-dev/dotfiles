@@ -23,3 +23,6 @@ alias ls='eza'
 alias cd='z'
 # lazygit
 alias lg='lazygit'
+# rm
+alias real-rm='rm'
+alias rm='gomi'
