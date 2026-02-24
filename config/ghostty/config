@@ -1,6 +1,7 @@
 # Theme
 theme = Kanagawa Dragon
 # Font
+font-family = "Hack Nerd Font"
 font-feature = -dlig
 font-size = 17
 
