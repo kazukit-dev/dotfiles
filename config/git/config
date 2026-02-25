@@ -6,3 +6,5 @@
     co = checkout
     c  = commit
     br = branch
+[pull]
+    rebase = true
