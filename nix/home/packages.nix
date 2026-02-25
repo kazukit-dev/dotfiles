@@ -22,6 +22,7 @@
         fzf # Fuzzy finder for command-line
         git # version control
         gomi # Trash CLI for safely deleting files
+        gh # GitHub CLI
 
         # File Manager
         yazi # file manager
