@@ -21,6 +21,8 @@ in
     "claude/settings.json".source = mkLink "config/claude/settings.json";
     "claude/statusline.sh".source = mkLink "config/claude/statusline.sh";
     "claude/skills".source = mkLink "config/claude/skills";
+    # cspell (referenced from VSCode settings etc.)
+    "cspell".source = mkLink "config/cspell";
     # Ghostty
     "ghostty".source = mkLink "config/ghostty";
     # Zsh

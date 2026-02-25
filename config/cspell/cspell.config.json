@@ -1,0 +1,12 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "dictionaries": ["personal"],
+  "dictionaryDefinitions": [
+    {
+      "name": "personal",
+      "path": "./dicts/personal.txt",
+      "addWords": true
+    }
+  ]
+}
