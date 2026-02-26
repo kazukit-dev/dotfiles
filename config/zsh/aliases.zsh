@@ -26,3 +26,5 @@ alias lg='lazygit'
 # rm
 alias real-rm='rm'
 alias rm='gomi'
+# claude
+alias c='claude'
