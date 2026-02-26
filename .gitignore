@@ -33,3 +33,7 @@ Temporary Items
 
 # local file
 *.local
+
+# karabiner
+config/karabiner/*
+!config/karabiner/karabiner.json

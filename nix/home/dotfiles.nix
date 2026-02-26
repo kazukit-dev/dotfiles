@@ -35,5 +35,7 @@ in
     "sheldon".source = mkLink "config/sheldon";
     # Gomi
     "gomi".source = mkLink "config/gomi";
+    # Karabiner-Elements
+    "karabiner".source = mkLink "config/karabiner";
   };
 }
