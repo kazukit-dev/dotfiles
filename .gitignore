@@ -37,3 +37,7 @@ Temporary Items
 # karabiner
 config/karabiner/*
 !config/karabiner/karabiner.json
+
+# 1Password
+config/1Password/*
+!config/1Password/ssh/agent.toml
