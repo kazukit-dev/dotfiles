@@ -43,16 +43,8 @@
       flake-parts,
       treefmt-nix,
       git-hooks-nix,
-      nix-darwin,
-      home-manager,
       ...
     }:
-    let
-      system = "aarch64-darwin";
-      username = "kazuki";
-      homedir = "/Users/${username}";
-      hostname = "gabi";
-    in
     flake-parts.lib.mkFlake { inherit inputs; } {
       debug = true;
 
@@ -125,7 +117,7 @@
                 pkgs.writeShellScript "switch" ''
                   set -e
                   echo "Applying nix-darwin and home-manager configuration changes..."
-                  sudo nix run nix-darwin -- switch --flake .#${hostname}
+                  sudo nix run nix-darwin -- switch --flake ".#gabi"
                   echo "Done!"
                 ''
               );
@@ -159,29 +151,7 @@
         };
 
       flake = {
-        darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-          inherit system;
-          modules = [
-            inputs.determinate.darwinModules.default
-            (import ./nix/darwin { inherit username homedir; })
-            home-manager.darwinModules.home-manager
-            {
-              nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [
-                inputs.llm-agents.overlays.default
-              ];
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.${username} = import ./nix/home;
-                extraSpecialArgs = {
-                  inherit username homedir;
-                  inherit inputs;
-                };
-              };
-            }
-          ];
-        };
+        darwinConfigurations.gabi = import ./hosts/gabi { inherit inputs; };
       };
     };
 }
