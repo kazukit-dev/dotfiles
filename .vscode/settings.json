@@ -24,5 +24,31 @@
         }
       }
     }
-  }
+  },
+  "cSpell.words": [
+    "awscli",
+    "cachix",
+    "cmux",
+    "deadnix",
+    "gabi",
+    "ghostty",
+    "gomi",
+    "karabiner",
+    "kazukit",
+    "manaflow",
+    "nani",
+    "niks",
+    "nixfmt",
+    "nixos",
+    "nixpkgs",
+    "numtide",
+    "oxfmt",
+    "pkgs",
+    "shfmt",
+    "statix",
+    "substituters",
+    "taplo",
+    "treefmt",
+    "yazi"
+  ]
 }
