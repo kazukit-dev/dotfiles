@@ -1,0 +1,11 @@
+[tools]
+node = "lts"
+"npm:difit" = "latest"
+pnpm = "latest"
+bun = "latest"
+
+python = "3.13.11"
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]

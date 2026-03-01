@@ -30,17 +30,11 @@
         fd # file searching
         ripgrep # file content searching
 
-        # Languages
-        nodejs_24 # JavaScript runtime
-        python3 # Python interpreter
-
         # Language Servers
         nixd # Nix language server
 
         # Package Managers
-        bun # JavaScript runtime and package manager
-        pnpm # Node.js package manager
-        uv # Python package installer
+        mise # Universal package manager for CLI tools
 
         # Shell
         zsh # Z shell
