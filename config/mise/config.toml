@@ -4,7 +4,7 @@ node = "lts"
 pnpm = "latest"
 bun = "latest"
 
-python = "3.13.11"
+python = "3.14.3"
 uv = "latest"
 
 [settings]
