@@ -7,6 +7,10 @@ _: {
       cleanup = "zap";
     };
 
+    taps = [
+      "manaflow-ai/cmux"
+    ];
+
     brews = [
       "mas"
     ];
@@ -20,6 +24,7 @@ _: {
       # "zen"
       # Terminal
       "ghostty"
+      "cmux"
       # Note
       "obsidian"
       # Utilities
