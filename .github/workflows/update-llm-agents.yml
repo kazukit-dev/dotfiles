@@ -1,4 +1,4 @@
-name: Update flake lock frequently
+name: Update llm-agents (daily)
 on:
   schedule:
     - cron: "0 23 * * *"
