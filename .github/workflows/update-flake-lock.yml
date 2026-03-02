@@ -28,6 +28,7 @@ jobs:
           app-id: ${{ vars.PULL_REQUEST_APP_ID }}
           private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
       - name: Create Pull Request
+        id: create-pr
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           token: ${{ steps.app-token.outputs.token }}
@@ -48,3 +49,8 @@ jobs:
           labels: |
             dependencies
             nix
+      - name: Enable auto-merge
+        if: steps.create-pr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash --delete-branch
