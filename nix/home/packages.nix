@@ -40,6 +40,11 @@
         zsh # Z shell
         starship # Cross-shell prompt
         sheldon # Shell plugin manager
+
+        # Containerization
+        colima # Container runtime
+        docker
+        docker-compose
       ])
       ++ (with pkgs.llm-agents; [
         claude-code # Anthropic Claude Code CLI
