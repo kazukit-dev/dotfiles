@@ -45,6 +45,9 @@
         colima # Container runtime
         docker
         docker-compose
+
+        # AI Tools
+        ollama
       ])
       ++ (with pkgs.llm-agents; [
         claude-code # Anthropic Claude Code CLI
