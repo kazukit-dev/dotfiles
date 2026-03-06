@@ -26,4 +26,9 @@
   home.activation.createScreenShotsDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run mkdir -p "${config.home.homeDirectory}/Pictures/Screenshots"
   '';
+
+  home.activation.createProjectDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "${config.home.homeDirectory}/i"
+    run mkdir -p "${config.home.homeDirectory}/x"
+  '';
 }
