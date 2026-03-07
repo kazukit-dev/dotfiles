@@ -18,5 +18,6 @@
   "semanticCommits": "enabled",
   "commitMessagePrefix": "chore(deps):",
   "prHourlyLimit": 0,
-  "prConcurrentLimit": 10
+  "prConcurrentLimit": 10,
+  "automerge": true
 }
