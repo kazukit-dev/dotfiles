@@ -39,5 +39,7 @@ in
     "mise".source = mkLink "config/mise";
     # Karabiner-Elements
     "karabiner".source = mkLink "config/karabiner";
+    # zeno
+    "zeno".source = mkLink "config/zeno";
   };
 }

@@ -18,6 +18,27 @@ apply = ["defer"]
 github = "zdharma-continuum/fast-syntax-highlighting"
 apply = ["defer"]
 
+
+[plugins.zeno]
+github = "yuki-yano/zeno.zsh"
+hooks.pre = """
+export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
+export ZENO_GIT_CAT="bat --color=always"
+export ZENO_GIT_TREE="eza --tree"
+export ZENO_DISABLE_AUTOMATIC_WORKSPACE_LOOKUP=1
+"""
+hooks.post = """
+if [[ -n $ZENO_LOADED ]]; then
+  bindkey ' ' zeno-auto-snippet
+  bindkey '^m' zeno-auto-snippet-and-accept-line
+  bindkey '^i' zeno-completion
+  bindkey '^r' zeno-history-selection
+  bindkey '^x' zeno-insert-snippet
+  bindkey '^x^g' zeno-ghq-cd
+fi
+"""
+
+
 [plugins.compinit]
 inline = '''
 autoload -Uz compinit

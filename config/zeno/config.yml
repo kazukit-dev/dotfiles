@@ -1,0 +1,35 @@
+snippets:
+  # git
+  - name: git commit message
+    keyword: gcm
+    snippet: git commit -m '{{commit_message}}'
+  - name: git push
+    keyword: gpush
+    snippet: git push origin {{branch_name}}
+  - name: git pull
+    keyword: gpull
+    snippet: git pull origin {{branch_name}}
+  - name: git checkout
+    keyword: gco
+    snippet: git checkout {{branch_name}}
+  - name: git check -b
+    keyword: gcb
+    snippet: git checkout -b {{branch_name}}
+  # docker
+  - name: docker compose
+    keyword: dc
+    snippet: docker compose {{args}}
+  # agent
+  - name: claude code
+    keyword: cc
+    snippet: claude
+  # utilities
+  - name: create directory and move into it
+    keyword: dir
+    snippet: mkdir {{dir_name}} && cd "$_"
+  - name: navigate to projects directory
+    keyword: i
+    snippet: cd ~/i && cd {{project_name}}
+  - name: navigate to experiments directory
+    keyword: x
+    snippet: cd ~/x && cd {{experiment_name}}
