@@ -34,6 +34,8 @@ _: {
       "claude"
       # AI-powered translator
       "nani"
+      # IDE
+      "datagrip"
     ];
 
     masApps = {
