@@ -6,6 +6,7 @@ bun = "latest"
 
 python = "3.14.3"
 uv = "latest"
+deno = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
