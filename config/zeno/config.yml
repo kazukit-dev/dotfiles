@@ -33,3 +33,6 @@ snippets:
   - name: navigate to experiments directory
     keyword: x
     snippet: cd ~/x && cd {{experiment_name}}
+  - name: search cloned repositories
+    keyword: sr
+    snippet: cd $(ghq list -p | fzf)

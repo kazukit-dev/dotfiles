@@ -34,7 +34,6 @@ if [[ -n $ZENO_LOADED ]]; then
   bindkey '^i' zeno-completion
   bindkey '^r' zeno-history-selection
   bindkey '^x' zeno-insert-snippet
-  bindkey '^x^g' zeno-ghq-cd
 fi
 """
 

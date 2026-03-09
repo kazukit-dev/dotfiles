@@ -8,3 +8,5 @@
     br = branch
 [pull]
     rebase = true
+[ghq]
+    root = ~/r

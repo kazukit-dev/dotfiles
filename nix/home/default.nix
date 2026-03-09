@@ -28,7 +28,11 @@
   '';
 
   home.activation.createProjectDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    # create my project directories if they don't exist
     run mkdir -p "${config.home.homeDirectory}/i"
+    # create experiments directory if it doesn't exist
     run mkdir -p "${config.home.homeDirectory}/x"
+    # create cloned repositories directory if it doesn't exist
+    run mkdir -p "${config.home.homeDirectory}/r"
   '';
 }

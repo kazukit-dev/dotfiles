@@ -23,6 +23,7 @@
         git # version control
         gomi # Trash CLI for safely deleting files
         gh # GitHub CLI
+        ghq # GitHub repository management CLI
 
         # File Manager
         yazi # file manager
