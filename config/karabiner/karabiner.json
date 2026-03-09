@@ -18,6 +18,9 @@
                   }
                 ],
                 "to_if_alone": [{ "key_code": "japanese_eisuu" }],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 300
+                },
                 "type": "basic"
               },
               {
@@ -32,6 +35,9 @@
                   }
                 ],
                 "to_if_alone": [{ "key_code": "japanese_kana" }],
+                "parameters": {
+                  "basic.to_if_alone_timeout_milliseconds": 300
+                },
                 "type": "basic"
               }
             ]
