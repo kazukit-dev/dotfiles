@@ -3,18 +3,9 @@
   "extends": ["config:recommended"],
   "timezone": "Asia/Tokyo",
   "nix": {
-    "enabled": true
+    "enabled": false
   },
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 3am on Sunday"]
-  },
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["lockFileMaintenance"],
-      "labels": ["dependencies", "nix"]
-    }
-  ],
+  "packageRules": [],
   "semanticCommits": "enabled",
   "commitMessagePrefix": "chore(deps):",
   "prHourlyLimit": 0,
