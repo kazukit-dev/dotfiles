@@ -10,7 +10,8 @@ customCommands:
         claude \
           --model haiku \
           --output-format text \
-          -p "Generate a conventional commit message for this diff.
+          --no-session-persistence \
+          --print "Generate a conventional commit message for this diff.
               Output ONLY the commit message, nothing else.
 
               Format:
@@ -24,7 +25,6 @@ customCommands:
               Rules:
               - Use present tense, imperative mood
               - Keep subject under 100 characters
-              - Body explains what and why, not how
-              - One logical change per message"
+              - Body explains what and why, not how"
       ) &&
       git commit -e -m "$msg"
