@@ -28,3 +28,5 @@ customCommands:
               - Body explains what and why, not how"
       ) &&
       git commit -e -m "$msg"
+gui:
+  nerdFontsVersion: "3"
