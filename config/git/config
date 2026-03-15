@@ -1,7 +1,7 @@
 [include]
     path = ./config.local
 [core]
-    editor = code --wait
+    editor = vi
 [alias]
     co = checkout
     c  = commit

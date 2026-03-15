@@ -29,6 +29,8 @@ in
     "zsh".source = mkLink "config/zsh";
     # Git
     "git".source = mkLink "config/git";
+    # Lazygit
+    "lazygit".source = mkLink "config/lazygit";
     # Starship
     "starship.toml".source = mkLink "config/starship.toml";
     # Sheldon
