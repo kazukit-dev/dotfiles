@@ -12,6 +12,7 @@ setopt hist_ignore_all_dups
 source $ZDOTDIR/aliases.zsh
 
 # Init
+eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(mise activate zsh)"

@@ -12,16 +12,28 @@
     inherit username;
     homeDirectory = homedir;
   };
-  programs.home-manager.enable = true;
-
   imports = [
     inputs.nix-index-database.homeModules.nix-index
     ./dotfiles.nix
     ./packages.nix
   ];
 
-  # nix-index-database: weekly updated package search database
-  programs.nix-index-database.comma.enable = true;
+  programs = {
+    home-manager.enable = true;
+
+    # nix-index-database: weekly updated package search database
+    nix-index-database.comma.enable = true;
+
+    # direnv: automatically load/unload dev environments
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      config.global = {
+        log_format = "-";
+        log_filter = "^$";
+      };
+    };
+  };
 
   home.activation.createScreenShotsDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run mkdir -p "${config.home.homeDirectory}/Pictures/Screenshots"
