@@ -2,8 +2,9 @@ name: Update flake lock
 description: Check and update flake inputs, creating a PR if updates are available
 inputs:
   targets:
-    description: Space-separated list of flake inputs to update
-    required: true
+    description: Space-separated list of flake inputs to update (updates all if not specified)
+    required: false
+    default: ""
   github-token:
     description: GitHub token for API access
     required: true
@@ -21,6 +22,7 @@ runs:
   using: composite
   steps:
     - name: Check for updates
+      if: inputs.targets != ''
       id: check
       shell: bash
       env:
@@ -55,7 +57,7 @@ runs:
 
         echo "needs_update=$NEEDS_UPDATE" >> "$GITHUB_OUTPUT"
     - name: Update inputs
-      if: steps.check.outputs.needs_update != ''
+      if: inputs.targets == '' || steps.check.outputs.needs_update != ''
       id: update
       shell: bash
       run: |
@@ -66,24 +68,40 @@ runs:
           jq -r ".nodes[\"$node_name\"].locked.rev" flake.lock
         }
 
-        SUMMARY=""
+        TARGETS="${{ steps.check.outputs.needs_update }}"
 
-        for input in ${{ steps.check.outputs.needs_update }}; do
-          old_rev=$(get_rev "$input")
-          nix flake update "$input"
-          new_rev=$(get_rev "$input")
-          SUMMARY="${SUMMARY}- **${input}**: \`${old_rev:0:7}\` → \`${new_rev:0:7}\`"$'\n'
-        done
+        if [ -z "$TARGETS" ]; then
+          nix flake update
+          echo "title=chore(flake): update dependencies" >> "$GITHUB_OUTPUT"
+          echo "summary=Automated update of all flake.lock inputs." >> "$GITHUB_OUTPUT"
+        else
+          SUMMARY=""
+          for input in $TARGETS; do
+            old_rev=$(get_rev "$input")
+            nix flake update "$input"
+            new_rev=$(get_rev "$input")
+            SUMMARY="${SUMMARY}- **${input}**: \`${old_rev:0:7}\` → \`${new_rev:0:7}\`"$'\n'
+          done
 
-        delimiter="$(openssl rand -hex 8)"
-        echo "summary<<${delimiter}" >> "$GITHUB_OUTPUT"
-        echo "$SUMMARY" >> "$GITHUB_OUTPUT"
-        echo "${delimiter}" >> "$GITHUB_OUTPUT"
+          delimiter="$(openssl rand -hex 8)"
+          echo "summary<<${delimiter}" >> "$GITHUB_OUTPUT"
+          echo "$SUMMARY" >> "$GITHUB_OUTPUT"
+          echo "${delimiter}" >> "$GITHUB_OUTPUT"
 
-        UPDATED="${{ steps.check.outputs.needs_update }}"
-        echo "title=chore(deps): update ${UPDATED// /, }" >> "$GITHUB_OUTPUT"
+          echo "title=chore(deps): update ${TARGETS// /, }" >> "$GITHUB_OUTPUT"
+        fi
+    - name: Check for changes
+      if: inputs.targets == '' || steps.check.outputs.needs_update != ''
+      id: has-changes
+      shell: bash
+      run: |
+        if git diff --quiet flake.lock; then
+          echo "changed=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+        fi
     - name: Get flake.lock diff
-      if: steps.check.outputs.needs_update != ''
+      if: steps.has-changes.outputs.changed == 'true'
       id: diff
       shell: bash
       run: |
@@ -92,14 +110,14 @@ runs:
         git diff flake.lock >> "$GITHUB_OUTPUT"
         echo "${delimiter}" >> "$GITHUB_OUTPUT"
     - name: Create GitHub App token
-      if: steps.check.outputs.needs_update != ''
+      if: steps.has-changes.outputs.changed == 'true'
       uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
       id: app-token
       with:
         app-id: ${{ inputs.pr-app-id }}
         private-key: ${{ inputs.pr-app-private-key }}
     - name: Create Pull Request
-      if: steps.check.outputs.needs_update != ''
+      if: steps.has-changes.outputs.changed == 'true'
       id: create-pr
       uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
       with:

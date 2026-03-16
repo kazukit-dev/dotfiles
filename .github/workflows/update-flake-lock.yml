@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "0 0 * * 1" # Every Monday at 00:00 UTC (09:00 JST)
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   update-flake-inputs:
     runs-on: ubuntu-latest
@@ -12,45 +14,9 @@ jobs:
         with:
           cachixAuthToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           skipPush: true
-      - name: Update flake.lock
-        run: nix flake update
-      - name: Get flake.lock diff
-        id: diff
-        run: |
-          delimiter="$(openssl rand -hex 8)"
-          echo "content<<${delimiter}" >> "$GITHUB_OUTPUT"
-          git diff flake.lock >> "$GITHUB_OUTPUT"
-          echo "${delimiter}" >> "$GITHUB_OUTPUT"
-      - name: Create GitHub App token
-        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
-        id: app-token
+      - uses: ./.github/actions/update-flake-lock
         with:
-          app-id: ${{ vars.PULL_REQUEST_APP_ID }}
-          private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
-      - name: Create Pull Request
-        id: create-pr
-        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
-        with:
-          token: ${{ steps.app-token.outputs.token }}
-          sign-commits: true
-          commit-message: "chore(flake): update dependencies"
-          title: "Automated flake.lock update"
-          body: |
-            Automated update of flake.lock inputs.
-
-            <details>
-            <summary>flake.lock diff</summary>
-
-            ```diff
-            ${{ steps.diff.outputs.content }}
-            ```
-
-            </details>
-          labels: |
-            dependencies
-            nix
-      - name: Enable auto-merge
-        if: steps.create-pr.outputs.pull-request-number
-        env:
-          GH_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: gh pr merge ${{ steps.create-pr.outputs.pull-request-number }} --auto --squash --delete-branch
+          github-token: ${{ github.token }}
+          pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
+          pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
+          auto-merge: "true"
