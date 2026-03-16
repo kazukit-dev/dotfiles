@@ -25,7 +25,8 @@ customCommands:
               Rules:
               - Use present tense, imperative mood
               - Keep subject under 100 characters
-              - Body explains what and why, not how"
+              - Body explains what and why, not how
+              - Do NOT wrap the output in backticks or code blocks"
       ) &&
       git commit -e -m "$msg"
 gui:
