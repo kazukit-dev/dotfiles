@@ -32,6 +32,7 @@ _: {
       "raycast"
       # AI
       "claude"
+      "codex-app"
       # AI-powered translator
       "nani"
       # IDE

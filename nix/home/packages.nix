@@ -53,6 +53,7 @@
       ])
       ++ (with pkgs.llm-agents; [
         claude-code # Anthropic Claude Code CLI
+        codex # Codex CLI
         # FIXME: gemini-cli build fails due to node-pty forkpty conflicting types
         # between darwinOpenptyHook shim and Apple SDK 14.4
         # https://github.com/numtide/llm-agents.nix
