@@ -36,6 +36,7 @@ _: {
       # AI-powered translator
       "nani"
       # IDE
+      "visual-studio-code"
       "datagrip"
     ];
 
