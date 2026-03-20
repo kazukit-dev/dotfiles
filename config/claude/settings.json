@@ -22,8 +22,6 @@
       "Bash(sudo *)",
       "Bash(curl *)",
       "Bash(chmod *)",
-      "Bash(rm -r *)",
-      "Bash(rm -rf *)",
       "Bash(git push --force *)",
       "Bash(git push -f *)",
       "Bash(git reset --hard *)",
