@@ -10,5 +10,3 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
 # Codex settings
 export CODEX_HOME=$XDG_CONFIG_HOME/codex
-# Gemini cli settings
-export GEMINI_CLI_HOME=$XDG_CONFIG_HOME/gemini
