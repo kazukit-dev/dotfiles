@@ -21,7 +21,8 @@ _: {
       "1password-cli"
       # Browser
       "google-chrome"
-      # "zen"
+      "thebrowsercompany-dia"
+      "zen"
       # Terminal
       "ghostty"
       "cmux"
@@ -37,7 +38,6 @@ _: {
       # AI-powered translator
       "nani"
       # IDE
-      "thebrowsercompany-dia"
       "visual-studio-code"
       "datagrip"
     ];
