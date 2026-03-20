@@ -32,6 +32,7 @@ _: {
       "raycast"
       # AI
       "claude"
+      "chatgpt"
       "codex-app"
       # AI-powered translator
       "nani"
