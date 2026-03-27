@@ -12,17 +12,23 @@ snippets:
   - name: git checkout
     keyword: gco
     snippet: git checkout {{branch_name}}
-  - name: git check -b
+  - name: git checkout -b
     keyword: gcb
     snippet: git checkout -b {{branch_name}}
   # docker
   - name: docker compose
     keyword: dc
     snippet: docker compose {{args}}
-  # agent
+  # claude
   - name: claude code
-    keyword: cc
+    keyword: cl
     snippet: claude
+  - name: continue latest claude session
+    keyword: clc
+    snippet: claude --continue
+  - name: resume claude session
+    keyword: clr
+    snippet: claude --resume
   # utilities
   - name: create directory and move into it
     keyword: dir
