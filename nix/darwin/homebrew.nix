@@ -31,6 +31,7 @@ _: {
       # Utilities
       "karabiner-elements"
       "raycast"
+      "logi-options+"
       # AI
       "claude"
       "chatgpt"
