@@ -9,8 +9,8 @@ font-style-bold = false
 font-style-italic = false
 font-style-bold-italic = false
 
-font-thicken = true
-font-thicken-strength = 1
+# font-thicken = true
+# font-thicken-strength = 1
 
 alpha-blending = linear
 
