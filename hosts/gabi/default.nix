@@ -8,6 +8,14 @@ inputs.nix-darwin.lib.darwinSystem {
   inherit system;
   modules = [
     inputs.determinate.darwinModules.default
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    {
+      nix-homebrew = {
+        enable = true;
+        user = username;
+        autoMigrate = true;
+      };
+    }
     (import ../../nix/darwin { inherit username homedir; })
     inputs.home-manager.darwinModules.home-manager
     {

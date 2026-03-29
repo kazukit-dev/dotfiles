@@ -34,6 +34,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
