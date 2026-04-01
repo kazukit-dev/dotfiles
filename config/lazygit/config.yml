@@ -31,3 +31,6 @@ customCommands:
       git commit -e -m "$msg"
 gui:
   nerdFontsVersion: "3"
+  theme:
+    selectedLineBgColor:
+      - "#2D4F67"
