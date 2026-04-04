@@ -41,7 +41,9 @@ in
     "mise".source = mkLink "config/mise";
     # Karabiner-Elements
     "karabiner".source = mkLink "config/karabiner";
-    # zeno
+    # Zeno
     "zeno".source = mkLink "config/zeno";
+    # Neovim
+    "nvim".source = mkLink "config/nvim";
   };
 }

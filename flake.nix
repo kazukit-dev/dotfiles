@@ -70,6 +70,8 @@
             programs = {
               # Nix
               nixfmt.enable = true;
+              # Lua
+              stylua.enable = true;
               # Shell
               shfmt.enable = true;
               # Toml

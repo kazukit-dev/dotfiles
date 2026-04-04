@@ -24,16 +24,14 @@
         gomi # Trash CLI for safely deleting files
         gh # GitHub CLI
         ghq # GitHub repository management CLI
-        direnv
+        direnv # Environment switcher
+        neovim # Vim-based text editor
 
         # File Manager
         yazi # file manager
         file # file type detection
         fd # file searching
         ripgrep # file content searching
-
-        # Language Servers
-        nixd # Nix language server
 
         # Package Managers
         mise # Universal package manager for CLI tools
@@ -50,6 +48,21 @@
 
         # AI Tools
         ollama
+      ])
+      ++ (with pkgs; [
+        # Neovim Language Servers
+        lua-language-server # Lua language server
+        nixd # Nix language server
+        sqls # SQL language server
+        typescript-language-server # TypeScript/JavaScript language server
+        typos-lsp # Typos spell checker language server
+        vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
+        yaml-language-server # YAML language server
+
+        # Neovim Formatters & Linters
+        nixfmt # Nix formatter
+        stylua # Lua formatter
+        typos # Source code spell checker
       ])
       ++ (with pkgs.llm-agents; [
         claude-code # Anthropic Claude Code CLI

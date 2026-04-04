@@ -9,3 +9,6 @@ alias lg='lazygit'
 # rm
 alias real-rm='rm'
 alias rm='gomi'
+# vim
+alias vi='nvim'
+alias vim='nvim'
