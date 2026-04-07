@@ -1,6 +1,6 @@
 [tools]
 node = "lts"
-"npm:difit" = "latest"
+"npm:difit" = { version = "latest", depends = ["node"] }
 pnpm = "latest"
 bun = "latest"
 
