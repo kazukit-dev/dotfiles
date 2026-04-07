@@ -26,6 +26,7 @@
         ghq # GitHub repository management CLI
         direnv # Environment switcher
         neovim # Vim-based text editor
+        tree-sitter # Parser generator tool (required by nvim-treesitter)
 
         # File Manager
         yazi # file manager
