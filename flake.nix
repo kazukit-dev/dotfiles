@@ -34,7 +34,8 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # Pinned to 2026-01-26 to avoid masApps installation failure (https://github.com/zhaofengli/nix-homebrew/issues/131)
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew/a5409abd0d5013d79775d3419bcac10eacb9d8c5";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
