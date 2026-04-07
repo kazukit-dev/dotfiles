@@ -4,7 +4,7 @@ node = "lts"
 pnpm = "latest"
 bun = "latest"
 
-python = "3.14.3"
+python = "3.14.4"
 uv = "latest"
 deno = "latest"
 
