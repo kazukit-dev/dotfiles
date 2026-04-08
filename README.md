@@ -26,7 +26,12 @@ This repository provides a declarative and reproducible development environment 
    sudo nix run nix-darwin -- switch --flake .#<hostname>
    ```
 
-4. Setup git signing key:
+4. Enable 1Password SSH agent:
+
+   Open 1Password > Settings > Developer and enable "Use the SSH agent".
+   This allows SSH keys stored in 1Password to be used for Git signing and SSH authentication.
+
+5. Setup git signing key:
 
    ```sh
    ./scripts/setup-git-signing-key.sh
