@@ -56,5 +56,8 @@
     "type": "command",
     "command": "~/.config/claude/statusline.sh"
   },
-  "language": "japanese"
+  "language": "japanese",
+  "enabledPlugins": {
+    "lua-lsp@claude-plugins-official": true
+  }
 }
