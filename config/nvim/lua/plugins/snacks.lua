@@ -27,7 +27,15 @@ return {
           { icon = "⌨ ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
         },
       },
-      lazygit = { enabled = true },
+      lazygit = {
+        enabled = true,
+        win = {
+          style = "lazygit",
+          wo = {
+            winhighlight = "NormalFloat:Normal",
+          },
+        },
+      },
       rename = { enabled = true },
       statuscolumn = { enabled = true },
     },
