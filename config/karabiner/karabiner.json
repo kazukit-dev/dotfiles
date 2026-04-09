@@ -11,6 +11,7 @@
                   "key_code": "left_command",
                   "modifiers": { "optional": ["any"] }
                 },
+                "parameters": { "basic.to_if_alone_timeout_milliseconds": 150 },
                 "to": [
                   {
                     "key_code": "left_command",
@@ -18,9 +19,6 @@
                   }
                 ],
                 "to_if_alone": [{ "key_code": "japanese_eisuu" }],
-                "parameters": {
-                  "basic.to_if_alone_timeout_milliseconds": 300
-                },
                 "type": "basic"
               },
               {
@@ -28,6 +26,7 @@
                   "key_code": "right_command",
                   "modifiers": { "optional": ["any"] }
                 },
+                "parameters": { "basic.to_if_alone_timeout_milliseconds": 150 },
                 "to": [
                   {
                     "key_code": "right_command",
@@ -35,9 +34,25 @@
                   }
                 ],
                 "to_if_alone": [{ "key_code": "japanese_kana" }],
-                "parameters": {
-                  "basic.to_if_alone_timeout_milliseconds": 300
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Ctrl+[ also sends Eisuu for Vim escape",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "open_bracket",
+                  "modifiers": { "mandatory": ["control"] }
                 },
+                "to": [
+                  {
+                    "key_code": "open_bracket",
+                    "modifiers": ["control"]
+                  },
+                  { "key_code": "japanese_eisuu" }
+                ],
                 "type": "basic"
               }
             ]
@@ -96,10 +111,10 @@
       "devices": [
         {
           "identifiers": {
+            "description": "Nuphy Air75 V3",
             "is_keyboard": true,
             "is_pointing_device": true,
-            "vendor_id": 2007,
-            "description": "Nuphy Air75 V3"
+            "vendor_id": 2007
           },
           "ignore": false
         }
