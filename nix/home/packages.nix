@@ -34,7 +34,6 @@ in
         ghq # GitHub repository management CLI
         direnv # Environment switcher
         neovim # Vim-based text editor
-        tree-sitter # Parser generator tool (required by nvim-treesitter)
 
         # File Manager
         yazi # file manager
@@ -67,6 +66,9 @@ in
         difit
       ])
       ++ (with pkgs; [
+        # Neovim Dependencies
+        tree-sitter # Parser generator tool (required by nvim-treesitter)
+
         # Neovim Language Servers
         efm-langserver # Integrate formatters and linters via LSP
         dockerfile-language-server # Dockerfile language server
