@@ -150,9 +150,6 @@ format = '\[$symbol[$ram( | $swap)]($style)\]'
 [meson]
 format = '\[[$symbol$project]($style)\]'
 
-[mise]
-format = '\[[$symbol$health]($style)\]'
-
 [mojo]
 format = '\[[$symbol($version)]($style)\]'
 

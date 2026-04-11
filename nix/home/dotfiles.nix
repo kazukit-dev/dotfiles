@@ -37,8 +37,6 @@ in
     "sheldon".source = mkLink "config/sheldon";
     # Gomi
     "gomi".source = mkLink "config/gomi";
-    # Mise
-    "mise".source = mkLink "config/mise";
     # Karabiner-Elements
     "karabiner".source = mkLink "config/karabiner";
     # Zeno

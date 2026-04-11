@@ -5,6 +5,14 @@
   pkgs,
   ...
 }:
+let
+  czg = pkgs.writeShellScriptBin "czg" ''
+    exec ${pkgs.bun}/bin/bunx czg@1.12.0 "$@"
+  '';
+  difit = pkgs.writeShellScriptBin "difit" ''
+    exec ${pkgs.bun}/bin/bunx difit@4.0.3 "$@"
+  '';
+in
 {
   home = {
     packages =
@@ -34,8 +42,12 @@
         fd # file searching
         ripgrep # file content searching
 
-        # Package Managers
-        mise # Universal package manager for CLI tools
+        # Development
+        nodejs_25
+        python314
+        pnpm
+        bun
+        deno
 
         # Shell
         zsh # Z shell
@@ -49,6 +61,10 @@
 
         # AI Tools
         ollama
+
+        # Git Tools
+        czg
+        difit
       ])
       ++ (with pkgs; [
         # Neovim Language Servers

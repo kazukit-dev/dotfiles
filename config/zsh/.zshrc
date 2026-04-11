@@ -15,7 +15,6 @@ source $ZDOTDIR/aliases.zsh
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(mise activate zsh)"
 ## sheldon cache technique
 sheldon_cache="$XDG_CACHE_HOME/sheldon.zsh"
 sheldon_toml="$XDG_CONFIG_HOME/sheldon/plugins.toml"
