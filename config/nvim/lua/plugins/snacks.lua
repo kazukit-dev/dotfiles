@@ -5,6 +5,11 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      styles = {
+        float = {
+          border = "rounded",
+        },
+      },
       picker = { enabled = true },
       dashboard = {
         enabled = true,
