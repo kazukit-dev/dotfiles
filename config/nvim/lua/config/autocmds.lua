@@ -14,5 +14,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename symbol" })
+
+    if client and client:supports_method("textDocument/formatting") then
+      local group = vim.api.nvim_create_augroup("LspFormatOnSave_" .. args.buf, { clear = true })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        buffer = args.buf,
+        callback = function()
+          local efm = vim.lsp.get_clients({ bufnr = args.buf, name = "efm" })
+          vim.lsp.buf.format({
+            bufnr = args.buf,
+            timeout_ms = 500,
+            filter = function(c)
+              if #efm > 0 then
+                return c.name == "efm"
+              end
+              return true
+            end,
+          })
+        end,
+      })
+    end
   end,
 })

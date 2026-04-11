@@ -12,6 +12,7 @@ return {
           vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
         },
       },
+      format = { enable = false },
       hint = { enable = true },
       telemetry = { enable = false },
     },

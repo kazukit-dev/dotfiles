@@ -68,7 +68,10 @@ in
       ])
       ++ (with pkgs; [
         # Neovim Language Servers
+        efm-langserver # Integrate formatters and linters via LSP
+        dockerfile-language-server # Dockerfile language server
         lua-language-server # Lua language server
+        marksman # Markdown language server
         nixd # Nix language server
         sqls # SQL language server
         typescript-language-server # TypeScript/JavaScript language server
@@ -77,6 +80,8 @@ in
         yaml-language-server # YAML language server
 
         # Neovim Formatters & Linters
+        actionlint # GitHub Actions workflow linter
+        hadolint # Dockerfile linter
         nixfmt # Nix formatter
         stylua # Lua formatter
         typos # Source code spell checker

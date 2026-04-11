@@ -9,9 +9,12 @@ return {
       })
       vim.lsp.enable({
         "cssls",
+        "dockerls",
+        "efm",
         "html",
         "jsonls",
         "lua_ls",
+        "marksman",
         "nixd",
         "oxlint",
         "sqls",
