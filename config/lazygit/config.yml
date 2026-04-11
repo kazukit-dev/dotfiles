@@ -30,6 +30,7 @@ customCommands:
       ) &&
       git commit -e -m "$msg"
 gui:
+  language: en
   nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
