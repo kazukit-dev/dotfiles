@@ -10,7 +10,13 @@ return {
           border = "rounded",
         },
       },
-      picker = { enabled = true },
+      picker = {
+        enabled = true,
+        sources = {
+          files = { hidden = true },
+          grep = { hidden = true },
+        },
+      },
       dashboard = {
         enabled = true,
         preset = {
