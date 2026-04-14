@@ -23,6 +23,9 @@ export BUN_INSTALL_CACHE_DIR=$XDG_CACHE_HOME/bun/install/cache
 export DENO_DIR=$XDG_CACHE_HOME/deno
 # Docker settings
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
+# nb settings
+export NBRC_PATH=$XDG_CONFIG_HOME/nb/nbrc
+export NB_DIR=$XDG_DATA_HOME/nb
 # Less settings
 export LESSHISTFILE=$XDG_STATE_HOME/less/history
 # Editor
