@@ -15,6 +15,7 @@ return {
             StatusLine = { link = "Normal" },
             StatusLineNC = { link = "Normal" },
             NoiceVirtualText = { bg = theme.ui.bg_search },
+            FloatBorder = { bg = "NONE" },
           }
         end,
       })
