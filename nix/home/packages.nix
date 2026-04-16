@@ -43,11 +43,12 @@ in
         ripgrep # file content searching
 
         # Development
-        nodejs_25
         python314
-        pnpm
-        bun
-        deno
+        uv # Python package manager
+        nodejs_25
+        pnpm # JavaScript package manager
+        bun # JavaScript runtime and toolkit
+        deno # JavaScript runtime
 
         # Shell
         zsh # Z shell
