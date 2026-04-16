@@ -43,6 +43,10 @@ _: {
         ];
         # Whether to show recent applications in the dock
         show-recents = false;
+        # Enable magnification on hover
+        magnification = true;
+        # Icon size when magnified (16-128)
+        largesize = 64;
         # Set the minimize/maximize window effect
         mineffect = "genie";
         # Dock position
