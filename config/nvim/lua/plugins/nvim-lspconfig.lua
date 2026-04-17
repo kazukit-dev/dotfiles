@@ -21,6 +21,7 @@ return {
         "ts_ls",
         "typos_lsp",
         "yamlls",
+        "bashls",
       })
     end,
   },

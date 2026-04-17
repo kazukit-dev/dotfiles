@@ -81,9 +81,11 @@ in
         typescript-language-server # TypeScript/JavaScript language server
         typos-lsp # Typos spell checker language server
         vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
+        bash-language-server # Bash/Shell language server
         yaml-language-server # YAML language server
 
         # Neovim Formatters & Linters
+        shellcheck # Shell script linter
         actionlint # GitHub Actions workflow linter
         hadolint # Dockerfile linter
         nixfmt # Nix formatter
