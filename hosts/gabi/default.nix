@@ -29,6 +29,7 @@ inputs.nix-darwin.lib.darwinSystem {
         users.${username} = import ../../nix/home;
         extraSpecialArgs = {
           inherit username homedir inputs;
+          dotfilesPath = "${homedir}/ghq/github.com/kazukit-dev/dotfiles";
         };
       };
     }

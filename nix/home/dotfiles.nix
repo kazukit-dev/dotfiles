@@ -3,10 +3,10 @@
 # so changes take effect immediately without running `nix run .#switch`.
 {
   config,
+  dotfilesPath,
   ...
 }:
 let
-  dotfilesPath = "${config.home.homeDirectory}/dotfiles";
   mkLink = path: config.lib.file.mkOutOfStoreSymlink "${dotfilesPath}/${path}";
 in
 {

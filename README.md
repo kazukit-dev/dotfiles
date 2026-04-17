@@ -20,6 +20,11 @@ This repository provides a declarative and reproducible development environment 
 
 2. Clone this repository:
 
+    ```sh
+    mkdir -p ~/ghq/github.com/kazukit-dev
+    git clone git@github.com:kazukit-dev/dotfiles.git > ~/ghq/github.com/kazukit-dev/
+    ```
+
 3. Apply the nix-darwin configuration:
 
    ```sh
