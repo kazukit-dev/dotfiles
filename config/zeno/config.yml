@@ -33,12 +33,3 @@ snippets:
   - name: create directory and move into it
     keyword: dir
     snippet: mkdir {{dir_name}} && cd "$_"
-  - name: navigate to projects directory
-    keyword: i
-    snippet: cd ~/i && cd {{project_name}}
-  - name: navigate to experiments directory
-    keyword: x
-    snippet: cd ~/x && cd {{experiment_name}}
-  - name: search cloned repositories
-    keyword: sr
-    snippet: cd $(ghq list -p | fzf)

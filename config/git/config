@@ -9,4 +9,4 @@
 [pull]
     rebase = true
 [ghq]
-    root = ~/r
+    root = ~/ghg

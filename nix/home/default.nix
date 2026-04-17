@@ -38,13 +38,11 @@
   home.activation.createScreenShotsDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     run mkdir -p "${config.home.homeDirectory}/Pictures/Screenshots"
   '';
-
-  home.activation.createProjectDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    # create my project directories if they don't exist
-    run mkdir -p "${config.home.homeDirectory}/i"
-    # create experiments directory if it doesn't exist
-    run mkdir -p "${config.home.homeDirectory}/x"
-    # create cloned repositories directory if it doesn't exist
-    run mkdir -p "${config.home.homeDirectory}/r"
+  home.activation.createGhqDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "${config.home.homeDirectory}/ghq"
   '';
+  home.activation.createTmpDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p "${config.home.homeDirectory}/tmp"
+  '';
+
 }

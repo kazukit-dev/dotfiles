@@ -11,6 +11,9 @@ setopt hist_ignore_all_dups
 # Alias
 source $ZDOTDIR/aliases.zsh
 
+# Functions
+source $ZDOTDIR/functions.zsh
+
 # Init
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
