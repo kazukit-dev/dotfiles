@@ -12,6 +12,9 @@ function tmp() {
       fi
       mkdir -p ~/tmp/"$name" && cd "$_"
       ;;
+    ls)
+      ls ~/tmp "$@"
+      ;;
     cd)
       local dir
       dir=$(ls ~/tmp | fzf --reverse)
@@ -22,6 +25,7 @@ function tmp() {
       echo ""
       echo "commands:"
       echo "  new <name>  Create a new tmp project and cd into it"
+      echo "  ls          List tmp projects"
       echo "  cd          Select and cd into a tmp project"
       return 1
       ;;
@@ -34,7 +38,7 @@ function repo() {
   shift 2>/dev/null
 
   case $cmd in
-    list)
+    ls)
       ghq list "$@"
       ;;
     cd)
@@ -46,7 +50,7 @@ function repo() {
       echo "usage: repo <command>"
       echo ""
       echo "commands:"
-      echo "  list    List repositories"
+      echo "  ls      List repositories"
       echo "  cd      Select and cd into a repository"
       return 1
       ;;
