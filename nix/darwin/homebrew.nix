@@ -41,6 +41,8 @@ _: {
       # IDE
       "visual-studio-code"
       "datagrip"
+      # IME
+      "azookey"
     ];
 
     masApps = {
