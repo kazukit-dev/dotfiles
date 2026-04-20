@@ -10,6 +10,8 @@ return {
           vim.env.VIMRUNTIME,
           "${3rd}/luv/library",
           vim.fn.stdpath("data") .. "/lazy/lazy.nvim",
+          vim.fn.stdpath("data") .. "/lazy/snacks.nvim",
+          vim.fn.stdpath("data") .. "/lazy/mini.statusline",
         },
       },
       format = { enable = false },
