@@ -38,6 +38,12 @@ return {
           { icon = "⌨ ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
         },
       },
+      terminal = {
+        enabled = true,
+        win = {
+          style = "terminal",
+        },
+      },
       lazygit = {
         enabled = true,
         win = {
@@ -113,6 +119,14 @@ return {
           Snacks.lazygit.log_file()
         end,
         desc = "Lazygit Log (current file)",
+      },
+      {
+        "<leader>tt",
+        function()
+          Snacks.terminal()
+        end,
+        mode = { "n", "t" },
+        desc = "Toggle terminal",
       },
     },
   },
