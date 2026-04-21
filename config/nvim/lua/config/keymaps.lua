@@ -33,7 +33,6 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 -- Buffer navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>")
 map("n", "<S-l>", "<cmd>bnext<cr>")
-map("n", "<leader>x", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 -- Exit terminal mode
 map("t", "<C-x>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

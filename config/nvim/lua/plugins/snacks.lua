@@ -12,6 +12,7 @@ return {
       },
       picker = {
         enabled = true,
+        main = { current = true },
         sources = {
           files = { hidden = true },
           grep = { hidden = true },
@@ -125,8 +126,14 @@ return {
         function()
           Snacks.terminal()
         end,
-        mode = { "n", "t" },
         desc = "Toggle terminal",
+      },
+      {
+        "<leader>x",
+        function()
+          Snacks.bufdelete()
+        end,
+        desc = "Close buffer",
       },
     },
   },
