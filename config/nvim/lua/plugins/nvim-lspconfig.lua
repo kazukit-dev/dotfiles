@@ -17,6 +17,7 @@ return {
         "marksman",
         "nixd",
         "oxlint",
+        "oxfmt",
         "sqls",
         "ts_ls",
         "typos_lsp",
