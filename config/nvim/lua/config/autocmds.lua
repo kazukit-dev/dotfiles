@@ -21,15 +21,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = group,
         buffer = args.buf,
         callback = function()
-          local efm = vim.lsp.get_clients({ bufnr = args.buf, name = "efm" })
           vim.lsp.buf.format({
             bufnr = args.buf,
             timeout_ms = 500,
             filter = function(c)
-              if #efm > 0 then
-                return c.name == "efm"
-              end
-              return true
+              return c.name ~= "ts_ls"
             end,
           })
         end,
