@@ -3,12 +3,12 @@ snippets:
   - name: git commit message
     keyword: gcm
     snippet: git commit -m '{{commit_message}}'
-  - name: git push
-    keyword: gpush
+  - name: git push current branch
+    keyword: gph
     snippet: git push origin {{branch_name}}
-  - name: git pull
-    keyword: gpull
-    snippet: git pull origin {{branch_name}}
+  - name: git pull current branch
+    keyword: gpb
+    snippet: git pull origin $(git branch --show-current)
   - name: git checkout
     keyword: gco
     snippet: git checkout {{branch_name}}
