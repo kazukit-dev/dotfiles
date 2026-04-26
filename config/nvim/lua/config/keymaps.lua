@@ -12,6 +12,12 @@ map({ "n", "i" }, "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 -- Clear search highlight
 map("n", "<Esc>", "<cmd>nohlsearch<cr>")
 
+-- Yank/paste to/from system clipboard
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+map("n", "<leader>Y", '"+yy', { desc = "Yank line to system clipboard" })
+map({ "n", "v" }, "<leader>p", '"+p', { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<leader>P", '"+P', { desc = "Paste from system clipboard before" })
+
 -- Window split
 map("n", "<leader>-", "<cmd>split<cr>", { desc = "Split horizontal" })
 map("n", "<leader>|", "<cmd>vsplit<cr>", { desc = "Split vertical" })

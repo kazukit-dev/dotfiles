@@ -17,7 +17,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.splitbelow = true
 opt.splitright = true
-opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.scrolloff = 8
 opt.updatetime = 250
