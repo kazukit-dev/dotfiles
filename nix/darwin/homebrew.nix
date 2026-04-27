@@ -18,7 +18,9 @@ _: {
     casks = [
       # Password manager
       "1password"
-      "1password-cli"
+      # Beta until 1password-cli stable 2.33.1+ ships a fix for the desktop
+      # integration regression (https://github.com/1Password/shell-plugins/issues/587).
+      "1password-cli@beta"
       # Browser
       "google-chrome"
       "thebrowsercompany-dia"
