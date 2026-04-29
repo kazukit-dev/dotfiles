@@ -21,13 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         group = group,
         buffer = args.buf,
         callback = function()
-          vim.lsp.buf.format({
-            bufnr = args.buf,
-            timeout_ms = 500,
-            filter = function(c)
-              return c.name ~= "ts_ls"
-            end,
-          })
+          vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 500 })
         end,
       })
     end

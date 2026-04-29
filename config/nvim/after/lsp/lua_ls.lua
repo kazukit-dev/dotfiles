@@ -1,5 +1,9 @@
 ---@type vim.lsp.Config
 return {
+  on_attach = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end,
   settings = {
     Lua = {
       runtime = { version = "LuaJIT", pathStrict = true, path = { "?.lua", "?/init.lua" } },
@@ -14,7 +18,6 @@ return {
           vim.fn.stdpath("data") .. "/lazy/mini.statusline",
         },
       },
-      format = { enable = false },
       hint = { enable = true },
       telemetry = { enable = false },
     },
