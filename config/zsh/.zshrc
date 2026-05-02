@@ -14,6 +14,9 @@ source $ZDOTDIR/aliases.zsh
 # Functions
 source $ZDOTDIR/functions.zsh
 
+# Keybindings
+source $ZDOTDIR/keybindings.zsh
+
 # Init
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"

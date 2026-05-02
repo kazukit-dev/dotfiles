@@ -32,27 +32,12 @@ function tmp() {
   esac
 }
 
-# repo: ghq + fzf repository manager
-function repo() {
-  local cmd=$1
-  shift 2>/dev/null
-
-  case $cmd in
-    ls)
-      ghq list "$@"
-      ;;
-    cd)
-      local dir
-      dir=$(ghq list --full-path "$@" | fzf --reverse)
-      [[ -n "$dir" ]] && cd "$dir"
-      ;;
-    *)
-      echo "usage: repo <command>"
-      echo ""
-      echo "commands:"
-      echo "  ls      List repositories"
-      echo "  cd      Select and cd into a repository"
-      return 1
-      ;;
-  esac
+function __ghq_roots() {
+  local selected
+  selected=$(ghq list --full-path | fzf --height 40% --reverse)
+  if [[ -n "$selected" ]]; then
+    BUFFER="cd -- $selected"
+    zle accept-line
+  fi
+  zle reset-prompt
 }
