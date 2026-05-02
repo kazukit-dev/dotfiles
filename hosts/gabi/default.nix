@@ -22,14 +22,6 @@ inputs.nix-darwin.lib.darwinSystem {
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [
         inputs.llm-agents.overlays.default
-        # Workaround for https://github.com/NixOS/nixpkgs/issues/513019
-        # direnv's checkPhase hangs on darwin due to a zsh SIGCHLD regression.
-        # Remove once nixpkgs#513081 (or the zsh fix #513971) is merged and pulled in.
-        (_final: prev: {
-          direnv = prev.direnv.overrideAttrs (_old: {
-            doCheck = !prev.stdenv.hostPlatform.isDarwin;
-          });
-        })
       ];
       home-manager = {
         useGlobalPkgs = true;
