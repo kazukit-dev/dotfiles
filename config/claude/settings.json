@@ -77,7 +77,8 @@
       "Bash(git switch *)",
       "Bash(git stash *)",
       "Bash(rm *)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "statusLine": {
     "type": "command",
@@ -87,5 +88,6 @@
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "language": "japanese"
+  "language": "japanese",
+  "skipAutoPermissionPrompt": true
 }
