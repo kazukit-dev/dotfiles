@@ -20,7 +20,6 @@ in
     # Claude Code
     "claude/settings.json".source = mkLink "config/claude/settings.json";
     "claude/statusline.sh".source = mkLink "config/claude/statusline.sh";
-    "claude/skills".source = mkLink "config/claude/skills";
     # cspell (referenced from VSCode settings etc.)
     "cspell".source = mkLink "config/cspell";
     # Cmux

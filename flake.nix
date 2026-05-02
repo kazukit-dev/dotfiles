@@ -38,6 +38,13 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew/a5409abd0d5013d79775d3419bcac10eacb9d8c5";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    agent-skills.url = "github:Kyure-A/agent-skills-nix";
+
+    # Skills
+    ast-grep-skill = {
+      url = "github:ast-grep/agent-skill";
+      flake = false;
+    };
   };
 
   outputs =

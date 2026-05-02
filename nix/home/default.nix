@@ -14,8 +14,10 @@
   };
   imports = [
     inputs.nix-index-database.homeModules.nix-index
+    inputs.agent-skills.homeManagerModules.default
     ./dotfiles.nix
     ./packages.nix
+    ./agent-skills.nix
   ];
 
   programs = {
