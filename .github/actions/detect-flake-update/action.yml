@@ -1,0 +1,91 @@
+name: Detect flake update
+description: Build a JSON matrix of root flake inputs that have upstream updates
+inputs:
+  targets:
+    description: Space-separated list of flake inputs (all root inputs if empty)
+    required: false
+    default: ""
+  ignore-targets:
+    description: Space-separated list of flake inputs to exclude from the matrix
+    required: false
+    default: ""
+  github-token:
+    description: GitHub token used to query upstream commits
+    required: true
+outputs:
+  matrix:
+    description: JSON array of input names suitable for matrix expansion
+    value: ${{ steps.build.outputs.matrix }}
+runs:
+  using: composite
+  steps:
+    - id: build
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
+        TARGETS_INPUT: ${{ inputs.targets }}
+        IGNORE_INPUT: ${{ inputs.ignore-targets }}
+      run: |
+        set -euo pipefail
+
+        if [ -z "$TARGETS_INPUT" ]; then
+          mapfile -t INPUTS < <(jq -r '.nodes.root.inputs | keys[]' flake.lock)
+        else
+          read -r -a INPUTS <<< "$TARGETS_INPUT"
+        fi
+
+        read -r -a IGNORE <<< "$IGNORE_INPUT"
+
+        RESULT=()
+        for input in "${INPUTS[@]}"; do
+          ignored=false
+          for name in "${IGNORE[@]}"; do
+            if [ "$name" = "$input" ]; then
+              ignored=true
+              break
+            fi
+          done
+          if [ "$ignored" = "true" ]; then
+            echo "skip $input: ignored"
+            continue
+          fi
+
+          node_name=$(jq -r ".nodes.root.inputs[\"$input\"] // \"\"" flake.lock)
+          if [ -z "$node_name" ]; then
+            echo "::warning::input '$input' not found in flake.lock"
+            continue
+          fi
+
+          pinned_rev=$(jq -r ".nodes[\"$node_name\"].original.rev // \"\"" flake.lock)
+          if [ -n "$pinned_rev" ]; then
+            echo "skip $input: pinned to rev $pinned_rev"
+            continue
+          fi
+
+          src_type=$(jq -r ".nodes[\"$node_name\"].original.type // \"\"" flake.lock)
+          if [ "$src_type" = "github" ]; then
+            owner=$(jq -r ".nodes[\"$node_name\"].original.owner" flake.lock)
+            repo=$(jq -r ".nodes[\"$node_name\"].original.repo" flake.lock)
+            ref=$(jq -r ".nodes[\"$node_name\"].original.ref // empty" flake.lock)
+            target_ref="${ref:-HEAD}"
+            locked_rev=$(jq -r ".nodes[\"$node_name\"].locked.rev // empty" flake.lock)
+            latest_rev=$(gh api "repos/$owner/$repo/commits/$target_ref" --jq '.sha')
+            if [ "$locked_rev" = "$latest_rev" ]; then
+              echo "skip $input: up to date ($locked_rev)"
+              continue
+            fi
+            echo "include $input: $locked_rev -> $latest_rev"
+          else
+            echo "include $input: type=$src_type (decided in update step)"
+          fi
+          RESULT+=("$input")
+        done
+
+        if [ ${#RESULT[@]} -eq 0 ]; then
+          MATRIX="[]"
+        else
+          MATRIX=$(printf '%s\n' "${RESULT[@]}" | jq -Rcs 'split("\n") | map(select(length > 0))')
+        fi
+
+        echo "matrix=$MATRIX" >> "$GITHUB_OUTPUT"
+        echo "matrix: $MATRIX"

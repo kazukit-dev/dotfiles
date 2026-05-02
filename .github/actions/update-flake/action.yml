@@ -1,0 +1,137 @@
+name: Update flake
+description: Update a single flake input and create a PR for it
+inputs:
+  input:
+    description: Name of the flake input to update
+    required: true
+  min-release-days:
+    description: Skip the update when the new locked revision is younger than this many days
+    required: false
+    default: "0"
+  pr-app-id:
+    description: GitHub App ID for creating tokens
+    required: true
+  pr-app-private-key:
+    description: GitHub App private key for creating tokens
+    required: true
+  auto-merge:
+    description: Enable auto-merge on the created PR
+    required: false
+    default: "false"
+runs:
+  using: composite
+  steps:
+    - name: Read locked rev (before)
+      id: before
+      shell: bash
+      env:
+        INPUT: ${{ inputs.input }}
+      run: |
+        set -euo pipefail
+        node_name=$(jq -r ".nodes.root.inputs[\"$INPUT\"] // \"\"" flake.lock)
+        if [ -z "$node_name" ]; then
+          echo "::error::input '$INPUT' not found in flake.lock"
+          exit 1
+        fi
+        rev=$(jq -r ".nodes[\"$node_name\"].locked.rev // \"\"" flake.lock)
+        echo "node=$node_name" >> "$GITHUB_OUTPUT"
+        echo "rev=$rev" >> "$GITHUB_OUTPUT"
+        echo "short-rev=${rev:0:7}" >> "$GITHUB_OUTPUT"
+    - name: Update input
+      shell: bash
+      env:
+        INPUT: ${{ inputs.input }}
+      run: nix flake update "$INPUT"
+    - name: Read locked rev (after)
+      id: after
+      shell: bash
+      env:
+        NODE: ${{ steps.before.outputs.node }}
+      run: |
+        set -euo pipefail
+        rev=$(jq -r ".nodes[\"$NODE\"].locked.rev // \"\"" flake.lock)
+        last_modified=$(jq -r ".nodes[\"$NODE\"].locked.lastModified // 0" flake.lock)
+        echo "rev=$rev" >> "$GITHUB_OUTPUT"
+        echo "short-rev=${rev:0:7}" >> "$GITHUB_OUTPUT"
+        echo "last-modified=$last_modified" >> "$GITHUB_OUTPUT"
+    - name: Decide whether to proceed
+      id: decide
+      shell: bash
+      env:
+        INPUT: ${{ inputs.input }}
+        OLD: ${{ steps.before.outputs.rev }}
+        NEW: ${{ steps.after.outputs.rev }}
+        MIN_DAYS: ${{ inputs.min-release-days }}
+        LAST: ${{ steps.after.outputs.last-modified }}
+      run: |
+        set -euo pipefail
+        if [ "$OLD" = "$NEW" ]; then
+          echo "no change for $INPUT (rev=$OLD)"
+          echo "proceed=false" >> "$GITHUB_OUTPUT"
+          exit 0
+        fi
+
+        if [ "$MIN_DAYS" -gt 0 ]; then
+          NOW=$(date +%s)
+          AGE_DAYS=$(( (NOW - LAST) / 86400 ))
+          if [ "$AGE_DAYS" -lt "$MIN_DAYS" ]; then
+            echo "skip $INPUT: age=${AGE_DAYS}d < min=${MIN_DAYS}d"
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+        fi
+
+        echo "proceed=true" >> "$GITHUB_OUTPUT"
+    - name: Get flake.lock diff
+      if: steps.decide.outputs.proceed == 'true'
+      id: diff
+      shell: bash
+      run: |
+        delimiter="$(openssl rand -hex 8)"
+        echo "content<<${delimiter}" >> "$GITHUB_OUTPUT"
+        git diff flake.lock >> "$GITHUB_OUTPUT"
+        echo "${delimiter}" >> "$GITHUB_OUTPUT"
+    - name: Create GitHub App token
+      if: steps.decide.outputs.proceed == 'true'
+      uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+      id: app-token
+      with:
+        app-id: ${{ inputs.pr-app-id }}
+        private-key: ${{ inputs.pr-app-private-key }}
+    - name: Create Pull Request
+      if: steps.decide.outputs.proceed == 'true'
+      id: create-pr
+      uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+      with:
+        token: ${{ steps.app-token.outputs.token }}
+        sign-commits: true
+        branch: update-flake/${{ inputs.input }}
+        commit-message: "chore(nix): update ${{ inputs.input }}"
+        title: "chore(nix): update ${{ inputs.input }}"
+        body: |
+          ## Updated input
+
+          - **${{ inputs.input }}**: `${{ steps.before.outputs.short-rev }}` → `${{ steps.after.outputs.short-rev }}`
+
+          <details>
+          <summary>flake.lock diff</summary>
+
+          ```diff
+          ${{ steps.diff.outputs.content }}
+          ```
+
+          </details>
+    - name: Add labels
+      if: steps.create-pr.outputs.pull-request-number
+      shell: bash
+      env:
+        GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
+      run: gh pr edit "$PR_NUMBER" --add-label "dependencies,nix"
+    - name: Enable auto-merge
+      if: steps.create-pr.outputs.pull-request-number && inputs.auto-merge == 'true'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
+      run: gh pr merge "$PR_NUMBER" --auto --squash --delete-branch

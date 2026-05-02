@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  update-flake-input:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -14,10 +14,10 @@ jobs:
         with:
           cachixAuthToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           skipPush: true
-      - uses: ./.github/actions/update-flake-lock
+      - uses: ./.github/actions/update-flake
         with:
-          targets: llm-agents
-          github-token: ${{ github.token }}
+          input: llm-agents
+          min-release-days: "0"
           pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
           pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
           auto-merge: "true"

@@ -1,0 +1,47 @@
+name: Update flake (weekly)
+on:
+  schedule:
+    - cron: "0 0 * * 1" # Every Monday at 00:00 UTC (09:00 JST)
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: Space-separated input names (default = all)
+        required: false
+        type: string
+        default: ""
+permissions:
+  contents: read
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.detect.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: ./.github/actions/detect-flake-update
+        id: detect
+        with:
+          targets: ${{ inputs.targets }}
+          ignore-targets: "llm-agents"
+          github-token: ${{ github.token }}
+  update:
+    needs: detect
+    if: needs.detect.outputs.matrix != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        input: ${{ fromJSON(needs.detect.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: ./.github/actions/setup-nix
+        with:
+          cachixAuthToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          skipPush: true
+      - uses: ./.github/actions/update-flake
+        with:
+          input: ${{ matrix.input }}
+          min-release-days: "3"
+          pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
+          pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
+          auto-merge: "true"
