@@ -105,12 +105,20 @@
           pre-commit.settings.hooks = {
             treefmt = {
               enable = true;
+              verbose = true;
               packageOverrides.treefmt = config.treefmt.build.wrapper;
             };
-            deadnix.enable = true;
-            statix.enable = true;
+            deadnix = {
+              enable = true;
+              verbose = true;
+            };
+            statix = {
+              enable = true;
+              verbose = true;
+            };
             gitleaks = {
               enable = true;
+              verbose = true;
               name = "gitleaks";
               description = "Detect hardcoded secrets";
               entry = "${pkgs.gitleaks}/bin/gitleaks git --verbose --redact --pre-commit --staged";
