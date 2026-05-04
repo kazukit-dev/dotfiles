@@ -1,6 +1,7 @@
 _: {
   # Enable Touch ID authentication for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.watchIdAuth = true;
 
   system = {
     stateVersion = 5;
