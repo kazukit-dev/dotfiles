@@ -3,13 +3,20 @@ _: {
   programs.agent-skills = {
     enable = true;
 
-    sources.ast-grep = {
-      input = "ast-grep-skill";
-      subdir = "ast-grep/skills";
-    };
+    sources = {
+      ast-grep = {
+        input = "ast-grep-skills";
+        subdir = "ast-grep/skills";
+      };
 
-    sources.my-skills = {
-      path = ../../agents/skills;
+      anthropic = {
+        input = "anthropic-skills";
+        subdir = "skills";
+      };
+
+      my-skills = {
+        path = ../../agents/skills;
+      };
     };
 
     skills.enableAll = true;

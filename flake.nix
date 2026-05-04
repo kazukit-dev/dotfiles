@@ -40,9 +40,12 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
 
-    # Skills
-    ast-grep-skill = {
+    ast-grep-skills = {
       url = "github:ast-grep/agent-skill";
+      flake = false;
+    };
+    anthropic-skills = {
+      url = "github:anthropics/skills";
       flake = false;
     };
   };
