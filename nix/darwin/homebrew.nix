@@ -3,7 +3,10 @@ _: {
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = true;
+      # Workaround for https://github.com/zhaofengli/nix-homebrew/issues/131
+      # (masApps install fails during activation when brew auto-update runs).
+      # Re-enable once #131 is fixed upstream.
+      autoUpdate = false;
       cleanup = "zap";
     };
 
