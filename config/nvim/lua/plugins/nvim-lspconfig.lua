@@ -21,6 +21,7 @@ return {
         "sqls",
         "ts_ls",
         "typos_lsp",
+        "vue_ls",
         "yamlls",
         "bashls",
       })

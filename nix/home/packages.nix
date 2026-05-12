@@ -82,6 +82,7 @@ in
         typescript-language-server # TypeScript/JavaScript language server
         typos-lsp # Typos spell checker language server
         vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers
+        vue-language-server # Vue.js language server (Volar)
         bash-language-server # Bash/Shell language server
         yaml-language-server # YAML language server
 
