@@ -16,6 +16,7 @@ return {
         "tsx",
         "javascript",
         "vue",
+        "html",
         "json",
         "yaml",
         "toml",
