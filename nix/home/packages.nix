@@ -36,6 +36,7 @@ in
         neovim # Vim-based text editor
         nb # Note taking CLI
         ast-grep # code search CLI
+        ctx7 # context7 CLI
 
         # File Manager
         yazi # file manager

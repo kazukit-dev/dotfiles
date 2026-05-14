@@ -127,6 +127,22 @@
         "type": "github"
       }
     },
+    "context7-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778588016,
+        "narHash": "sha256-jdRVkO/6oPTNgQZfdVnPmr5NnNoQ6RgzdhUg0pVjlns=",
+        "owner": "upstash",
+        "repo": "context7",
+        "rev": "61de754d48e57d5c22dadd4540a74203fd55ecf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "upstash",
+        "repo": "context7",
+        "type": "github"
+      }
+    },
     "determinate": {
       "inputs": {
         "determinate-nixd-aarch64-darwin": "determinate-nixd-aarch64-darwin",
@@ -632,6 +648,7 @@
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "ast-grep-skills": "ast-grep-skills",
+        "context7-skills": "context7-skills",
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
         "git-hooks-nix": "git-hooks-nix_2",
