@@ -38,12 +38,6 @@ in
         ast-grep # code search CLI
         ctx7 # context7 CLI
 
-        # File Manager
-        yazi # file manager
-        file # file type detection
-        fd # file searching
-        ripgrep # file content searching
-
         # Development
         python314
         uv # Python package manager
