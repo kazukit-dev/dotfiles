@@ -65,6 +65,7 @@ in
       ])
       ++ (with pkgs; [
         # Neovim Dependencies
+        ripgrep # search tool
         tree-sitter # Parser generator tool (required by nvim-treesitter)
 
         # Neovim Language Servers
