@@ -41,7 +41,7 @@ in
         # Development
         python314
         uv # Python package manager
-        nodejs_25
+        nodejs_24
         pnpm # JavaScript package manager
         bun # JavaScript runtime and toolkit
         deno # JavaScript runtime
