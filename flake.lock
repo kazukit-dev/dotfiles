@@ -129,11 +129,11 @@
     "context7-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1778588016,
-        "narHash": "sha256-jdRVkO/6oPTNgQZfdVnPmr5NnNoQ6RgzdhUg0pVjlns=",
+        "lastModified": 1779712330,
+        "narHash": "sha256-O6NVWqwA//cw7nS89FntED++nqJyuCz9y0FOfTPQrDM=",
         "owner": "upstash",
         "repo": "context7",
-        "rev": "61de754d48e57d5c22dadd4540a74203fd55ecf1",
+        "rev": "7e956e594584db4b1b66a3a4a07781e92b4d7e45",
         "type": "github"
       },
       "original": {
