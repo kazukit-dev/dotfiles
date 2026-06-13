@@ -34,7 +34,6 @@ in
         ghq # GitHub repository management CLI
         direnv # Environment switcher
         neovim # Vim-based text editor
-        nb # Note taking CLI
         ast-grep # code search CLI
         ctx7 # context7 CLI
 
