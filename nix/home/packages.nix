@@ -12,6 +12,9 @@ let
   difit = pkgs.writeShellScriptBin "difit" ''
     exec ${pkgs.bun}/bin/bunx difit@4.0.3 "$@"
   '';
+  leaf = pkgs.writeShellScriptBin "leaf" ''
+    exec ${pkgs.bun}/bin/bunx @rivolink/leaf "$@"
+  '';
 in
 {
   home = {
@@ -61,6 +64,7 @@ in
         # Git Tools
         czg
         difit
+        leaf
       ])
       ++ (with pkgs; [
         # Neovim Dependencies
