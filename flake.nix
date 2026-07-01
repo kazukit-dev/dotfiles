@@ -205,10 +205,17 @@
               (import ./nix/darwin { inherit username homedir; })
               inputs.home-manager.darwinModules.home-manager
               {
-                nixpkgs.config.allowUnfree = true;
-                nixpkgs.overlays = [
-                  inputs.llm-agents.overlays.default
-                ];
+                nixpkgs = {
+                  config.allowUnfree = true;
+                  # vue-language-server pulls pnpm 10.34.0 as a build-time
+                  # dependency; only used to fetch deps during build, not at runtime.
+                  config.permittedInsecurePackages = [
+                    "pnpm-10.34.0"
+                  ];
+                  overlays = [
+                    inputs.llm-agents.overlays.default
+                  ];
+                };
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;

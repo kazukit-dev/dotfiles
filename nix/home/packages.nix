@@ -44,7 +44,7 @@ in
         python314
         uv # Python package manager
         nodejs_24
-        pnpm # JavaScript package manager
+        pnpm_11 # JavaScript package manager
         bun # JavaScript runtime and toolkit
         deno # JavaScript runtime
 
