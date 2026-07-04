@@ -47,5 +47,7 @@ in
     "zeno".source = mkLink "config/zeno";
     # Neovim
     "nvim".source = mkLink "config/nvim";
+    # herdr
+    "herdr/config.toml".source = mkLink "config/herdr/config.toml";
   };
 }

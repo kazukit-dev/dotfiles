@@ -1,0 +1,13 @@
+[keys]
+prefix = "ctrl+j"
+
+goto = "prefix+g"
+split_horizontal = "prefix+minus"
+split_vertical = ["prefix+v", "prefix+|"]
+next_tab = "prefix+shift+l"
+previous_tab = "prefix+shift+h"
+next_workspace = "prefix+shift+j"
+previous_workspace = "prefix+shift+k"
+
+[theme]
+name = 'kanagawa'
