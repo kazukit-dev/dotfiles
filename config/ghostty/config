@@ -3,7 +3,7 @@ theme = Kanagawa Dragon
 # Font
 font-family = "UDEV Gothic 35NFLG"
 font-feature = -calt, -liga, -dlig 
-font-size = 18
+font-size = 16
 
 font-style-bold = false
 font-style-italic = false
