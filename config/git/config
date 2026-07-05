@@ -1,7 +1,7 @@
 [include]
     path = ./config.local
 [core]
-    editor = vi
+    editor = nvim
 [alias]
     co = checkout
     c  = commit
