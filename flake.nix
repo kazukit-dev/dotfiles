@@ -28,7 +28,11 @@
     };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Do NOT follow our nixpkgs: llm-agents publishes binaries built against
+      # its own pinned nixpkgs to cache.numtide.com (overlays.default). Making
+      # it follow ours means that once our nixpkgs revision drifts from theirs
+      # the derivation hashes diverge and miss the cache, forcing CI to rebuild
+      # from source (e.g. agent-browser's pnpm deps OOM the macOS runner).
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -56,6 +60,10 @@
     };
     context7-skills = {
       url = "github:upstash/context7";
+      flake = false;
+    };
+    agent-browser-skills = {
+      url = "github:vercel-labs/agent-browser";
       flake = false;
     };
   };

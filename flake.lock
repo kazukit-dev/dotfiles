@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "agent-browser-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782493662,
+        "narHash": "sha256-uCLzNQ0NAeg1TtA6tcBhTu5VTyjkumsyiEpAhYLPQD0=",
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "rev": "ed2e10598c9064aecfaeb7cf21b540684db4be2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "agent-browser",
+        "type": "github"
+      }
+    },
     "agent-skills": {
       "inputs": {
         "home-manager": "home-manager",
@@ -404,9 +420,7 @@
         "blueprint": "blueprint",
         "bun2nix": "bun2nix",
         "flake-parts": "flake-parts_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs_5",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"
       },
@@ -612,6 +626,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1782978903,
+        "narHash": "sha256-bG1LAS3YehMzp4RSXw99o3yMEO/Ktb0Tx29RCtEU0Tk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d33369954a67ae3322177dc9a3d564092912120c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1782723713,
         "narHash": "sha256-oPXCU/SSUokcGaJREHibG1CBX3+s/W7orDWQOZDsEeQ=",
         "owner": "nixos",
@@ -626,7 +656,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1770107345,
         "narHash": "sha256-tbS0Ebx2PiA1FRW8mt8oejR0qMXmziJmPaU1d4kYY9g=",
@@ -644,6 +674,7 @@
     },
     "root": {
       "inputs": {
+        "agent-browser-skills": "agent-browser-skills",
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "ast-grep-skills": "ast-grep-skills",
@@ -656,7 +687,7 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_6",
         "treefmt-nix": "treefmt-nix_2"
       }
     },
@@ -698,7 +729,7 @@
     },
     "treefmt-nix_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1780220602,
