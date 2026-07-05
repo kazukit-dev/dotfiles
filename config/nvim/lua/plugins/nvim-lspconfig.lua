@@ -5,19 +5,18 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.lsp.config("*", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        capabilities = require("blink.cmp").get_lsp_capabilities(),
       })
       vim.lsp.enable({
         "cssls",
         "dockerls",
-        "efm",
+        "eslint",
         "html",
         "jsonls",
         "lua_ls",
         "marksman",
         "nixd",
         "oxlint",
-        "oxfmt",
         "sqls",
         "ts_ls",
         "typos_lsp",

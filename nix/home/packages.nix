@@ -72,7 +72,6 @@ in
         tree-sitter # Parser generator tool (required by nvim-treesitter)
 
         # Neovim Language Servers
-        efm-langserver # Integrate formatters and linters via LSP
         dockerfile-language-server # Dockerfile language server
         lua-language-server # Lua language server
         marksman # Markdown language server
