@@ -58,10 +58,6 @@
       url = "github:upstash/context7";
       flake = false;
     };
-    agent-browser-skills = {
-      url = "github:vercel-labs/agent-browser";
-      flake = false;
-    };
   };
 
   outputs =

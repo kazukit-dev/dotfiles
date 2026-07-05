@@ -19,11 +19,6 @@ _: {
         subdir = "skills";
       };
 
-      agent-browser = {
-        input = "agent-browser-skills";
-        subdir = "skills";
-      };
-
       my-skills = {
         path = ../../agents/skills;
       };
@@ -33,7 +28,6 @@ _: {
       enableAll = [
         "ast-grep"
         "anthropic"
-        "agent-browser"
         "my-skills"
       ];
 

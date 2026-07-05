@@ -97,7 +97,6 @@ in
         claude-code # Anthropic Claude Code CLI
         codex # Codex CLI
         herdr # Terminal workspace manager for AI coding agents
-        agent-browser # Headless browser
       ]);
   };
 }
