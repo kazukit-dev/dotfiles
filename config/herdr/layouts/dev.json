@@ -1,0 +1,27 @@
+{
+  "tab_label": "dev",
+  "root": {
+    "type": "split",
+    "direction": "right",
+    "ratio": 0.6,
+    "first": {
+      "type": "split",
+      "direction": "down",
+      "ratio": 0.7,
+      "first": {
+        "type": "pane",
+        "label": "editor",
+        "command": ["nvim", "."]
+      },
+      "second": {
+        "type": "pane",
+        "label": "shell"
+      }
+    },
+    "second": {
+      "type": "pane",
+      "label": "agent",
+      "command": ["claude"]
+    }
+  }
+}

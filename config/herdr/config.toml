@@ -9,6 +9,12 @@ previous_tab = "prefix+shift+h"
 next_workspace = "prefix+shift+j"
 previous_workspace = "prefix+shift+k"
 
+[[keys.command]]
+key = "prefix+shift+d"
+type = "shell"
+command = "bash ~/.config/herdr/scripts/apply-layout.sh dev"
+description = "apply dev layout"
+
 [experimental]
 # for snacks image
 kitty_graphics = true
