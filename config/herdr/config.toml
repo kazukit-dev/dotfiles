@@ -15,6 +15,15 @@ type = "shell"
 command = "bash ~/.config/herdr/scripts/apply-layout.sh dev"
 description = "apply dev layout"
 
+[[keys.command]]
+key = "prefix+u"
+type = "shell"
+command = "bash ~/.config/herdr/scripts/focus-unread-agent.sh"
+description = "focus latest unread agent"
+
+[ui.toast]
+delivery = "herdr"
+
 [experimental]
 # for snacks image
 kitty_graphics = true
