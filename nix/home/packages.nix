@@ -70,6 +70,7 @@ in
         # Neovim Dependencies
         ripgrep # search tool
         tree-sitter # Parser generator tool (required by nvim-treesitter)
+        imagemagick # Image format conversion (required by snacks.image)
 
         # Neovim Language Servers
         dockerfile-language-server # Dockerfile language server

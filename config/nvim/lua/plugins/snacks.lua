@@ -54,6 +54,7 @@ return {
           },
         },
       },
+      image = { enabled = true },
       rename = { enabled = true },
       statuscolumn = { enabled = true },
     },
