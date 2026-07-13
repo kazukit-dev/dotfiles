@@ -28,7 +28,13 @@ export BUN_INSTALL_CACHE_DIR=$XDG_CACHE_HOME/bun/install/cache
 export DENO_DIR=$XDG_CACHE_HOME/deno
 # Docker settings
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
+# Rust settings
+export RUSTUP_HOME=$XDG_DATA_HOME/rustup
+export CARGO_HOME=$XDG_DATA_HOME/cargo
 # Less settings
 export LESSHISTFILE=$XDG_STATE_HOME/less/history
 # Editor
 export EDITOR=nvim
+
+# Deduplicate PATH entries
+typeset -U path PATH
