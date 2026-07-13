@@ -9,9 +9,9 @@ See @README.md for project overview, architecture, and available commands.
   nix run nixpkgs#pinact
   ```
 
-- Install AI agent packages through the `llm-agents` flake input, which keeps them up to date with the latest releases. 
+- Install AI agent packages through the `llm-agents` flake input, which keeps them up to date with the latest releases. Consume its `packages` output directly (not an overlay) so binaries come from cache.numtide.com.
   ```nix
-  packages = [
-    pkgs.llm-agents.<package>
+  packages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+    <package>
   ];
   ```

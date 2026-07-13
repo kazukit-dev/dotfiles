@@ -29,10 +29,12 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       # Do NOT follow our nixpkgs: llm-agents publishes binaries built against
-      # its own pinned nixpkgs to cache.numtide.com (overlays.default). Making
-      # it follow ours means that once our nixpkgs revision drifts from theirs
-      # the derivation hashes diverge and miss the cache, forcing CI to rebuild
-      # from source (e.g. agent-browser's pnpm deps OOM the macOS runner).
+      # its own pinned nixpkgs to cache.numtide.com, so we consume its
+      # packages.<system> output directly (not overlays.shared-nixpkgs, which
+      # rebuilds against our nixpkgs). Making it follow ours means that once
+      # our nixpkgs revision drifts from theirs the derivation hashes diverge
+      # and miss the cache, forcing CI to rebuild from source (e.g.
+      # agent-browser's pnpm deps OOM the macOS runner).
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -219,9 +221,6 @@
                   # dependency; only used to fetch deps during build, not at runtime.
                   config.permittedInsecurePackages = [
                     "pnpm-10.34.0"
-                  ];
-                  overlays = [
-                    inputs.llm-agents.overlays.default
                   ];
                 };
                 home-manager = {

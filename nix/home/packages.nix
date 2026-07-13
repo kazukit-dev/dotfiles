@@ -3,6 +3,7 @@
 # For GUI apps and macOS-specific tools, see nix/darwin/homebrew.nix
 {
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -93,7 +94,10 @@ in
         stylua # Lua formatter
         typos # Source code spell checker
       ])
-      ++ (with pkgs.llm-agents; [
+      # Built against llm-agents' own pinned nixpkgs so binaries come from
+      # cache.numtide.com; do NOT route these through our nixpkgs (see the
+      # llm-agents input comment in flake.nix).
+      ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
         claude-code # Anthropic Claude Code CLI
         codex # Codex CLI
         herdr # Terminal workspace manager for AI coding agents
