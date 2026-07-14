@@ -26,8 +26,6 @@ _: {
       "1password-cli@beta"
       # Browser
       "google-chrome"
-      "thebrowsercompany-dia"
-      "zen"
       # Terminal
       "ghostty"
       "cmux"
