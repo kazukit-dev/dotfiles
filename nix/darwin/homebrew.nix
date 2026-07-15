@@ -48,7 +48,7 @@ _: {
     ];
 
     masApps = {
-      "RunCat" = 1429033973;
+      "RunCat Neo" = 6757801838;
       "Amazon Prime Video" = 545519333;
       "DaisyDisk" = 411643860;
     };
