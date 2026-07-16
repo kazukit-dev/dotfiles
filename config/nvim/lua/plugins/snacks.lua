@@ -103,6 +103,16 @@ return {
         desc = "Grep",
       },
       {
+        "<leader>sd",
+        function()
+          local dir = vim.fn.input("Grep in dir: ", vim.fn.getcwd() .. "/", "dir")
+          if dir ~= "" then
+            Snacks.picker.grep({ dirs = { dir } })
+          end
+        end,
+        desc = "Grep (directory)",
+      },
+      {
         "<leader>fb",
         function()
           Snacks.picker.buffers()
