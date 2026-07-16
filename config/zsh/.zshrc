@@ -1,10 +1,14 @@
 # History
-export HISTFILE=$XDG_STATE_HOME/zsh/history
-export HISTSIZE=10000
-export SAVEHIST=10000
+# Not exported: a child bash would otherwise write its own format into the
+# same HISTFILE and corrupt the extended_history timestamps.
+HISTFILE=$XDG_STATE_HOME/zsh/history
+HISTSIZE=100000
+SAVEHIST=100000
 setopt share_history
-setopt hist_ignore_dups
 setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt extended_history
 
 [[ -d "${HISTFILE:h}" ]] || mkdir -p "${HISTFILE:h}"
 
