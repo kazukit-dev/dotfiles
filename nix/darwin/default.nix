@@ -12,6 +12,14 @@
   users.users.${username} = {
     home = homedir;
   };
+  # GUI apps are launched by launchd, not zsh, so they never read
+  # ~/.zshenv. Register the npm XDG variables with launchd too, or MCP
+  # servers spawned via npx by Claude Desktop / Codex fall back to ~/.npm.
+  launchd.user.envVariables = {
+    NPM_CONFIG_USERCONFIG = "${homedir}/.config/npm/npmrc";
+    NPM_CONFIG_CACHE = "${homedir}/.cache/npm";
+  };
+
   # Disable nix-darwin's compinit; managed by sheldon in .zshrc
   programs.zsh = {
     enable = true;
