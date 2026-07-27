@@ -18,6 +18,7 @@ return {
         "vue",
         "html",
         "json",
+        "rust",
         "yaml",
         "toml",
         "bash",

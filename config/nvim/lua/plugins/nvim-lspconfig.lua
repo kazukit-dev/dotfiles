@@ -17,6 +17,7 @@ return {
         "marksman",
         "nixd",
         "oxlint",
+        "rust_analyzer",
         "sqls",
         "ts_ls",
         "typos_lsp",

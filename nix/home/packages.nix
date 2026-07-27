@@ -48,6 +48,10 @@ in
         pnpm_11 # JavaScript package manager
         bun # JavaScript runtime and toolkit
         deno # JavaScript runtime
+        rustc # Rust compiler
+        cargo # Rust package manager
+        rustfmt # Rust code formatter
+        clippy # Rust linter
 
         # Shell
         zsh # Z shell
@@ -78,6 +82,7 @@ in
         lua-language-server # Lua language server
         marksman # Markdown language server
         nixd # Nix language server
+        rust-analyzer # Rust language server
         sqls # SQL language server
         typescript-language-server # TypeScript/JavaScript language server
         typos-lsp # Typos spell checker language server

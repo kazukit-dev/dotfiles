@@ -23,6 +23,8 @@ export UV_TOOL_BIN_DIR=$XDG_DATA_HOME/uv/bin
 export BUN_INSTALL_CACHE_DIR=$XDG_CACHE_HOME/bun/install/cache
 # Deno settings
 export DENO_DIR=$XDG_CACHE_HOME/deno
+# Rust settings
+export CARGO_HOME=$XDG_DATA_HOME/cargo
 # Docker settings
 export DOCKER_CONFIG=$XDG_CONFIG_HOME/docker
 # Less settings
@@ -30,5 +32,10 @@ export LESSHISTFILE=$XDG_STATE_HOME/less/history
 # Editor (overrides EDITOR=nano from nix-darwin's set-environment)
 export EDITOR=nvim
 
+# PATH
+path=(
+  $CARGO_HOME/bin # cargo install binaries
+  $path
+)
 # Deduplicate PATH entries
 typeset -U path PATH
