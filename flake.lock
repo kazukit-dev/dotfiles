@@ -390,6 +390,22 @@
         "type": "github"
       }
     },
+    "mizchi-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784050221,
+        "narHash": "sha256-ayMrZJ+3OD+f4azULSfgFh84UIQSoi+fhSOYvwWq45A=",
+        "owner": "mizchi",
+        "repo": "skills",
+        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizchi",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -636,6 +652,7 @@
         "git-hooks-nix": "git-hooks-nix_2",
         "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
+        "mizchi-skills": "mizchi-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",

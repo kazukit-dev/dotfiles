@@ -68,6 +68,10 @@
       url = "github:vercel-labs/agent-browser";
       flake = false;
     };
+    mizchi-skills = {
+      url = "github:mizchi/skills";
+      flake = false;
+    };
   };
 
   outputs =

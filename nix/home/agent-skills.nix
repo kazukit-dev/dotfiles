@@ -24,6 +24,11 @@ _: {
         subdir = "skills";
       };
 
+      mizchi = {
+        input = "mizchi-skills";
+        subdir = "meta";
+      };
+
       my-skills = {
         path = ../../agents/skills;
       };
@@ -36,6 +41,11 @@ _: {
         "agent-browser"
         "my-skills"
       ];
+
+      explicit.empirical-prompt-tuning = {
+        from = "mizchi";
+        path = "empirical-prompt-tuning";
+      };
 
       explicit.context7-cli = {
         from = "context7";
