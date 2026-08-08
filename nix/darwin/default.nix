@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./homebrew.nix
+    (import ./homebrew.nix { inherit homedir; })
     ./system.nix
     ./fonts.nix
   ];

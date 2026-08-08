@@ -1,4 +1,5 @@
-_: {
+{ homedir }:
+{
 
   homebrew = {
     enable = true;
@@ -8,6 +9,11 @@ _: {
       # Re-enable once #131 is fixed upstream.
       autoUpdate = false;
       cleanup = "zap";
+      # nix-darwin invokes brew through `sudo --preserve-env=PATH`, which drops
+      # XDG_CONFIG_HOME from ~/.zshenv; brew then falls back to ~/.homebrew for
+      # its trust store (see zhaofengli/nix-homebrew#161). extraEnv is applied
+      # after sudo, so the variable survives.
+      extraEnv.XDG_CONFIG_HOME = "${homedir}/.config";
     };
 
     taps = [
