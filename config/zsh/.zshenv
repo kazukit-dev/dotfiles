@@ -21,6 +21,8 @@ export UV_TOOL_DIR=$XDG_DATA_HOME/uv/tools
 export UV_TOOL_BIN_DIR=$XDG_DATA_HOME/uv/bin
 # Bun settings
 export BUN_INSTALL_CACHE_DIR=$XDG_CACHE_HOME/bun/install/cache
+export BUN_INSTALL_GLOBAL_DIR=$XDG_DATA_HOME/bun/install/global
+export BUN_INSTALL_BIN=$XDG_DATA_HOME/bun/bin
 # Deno settings
 export DENO_DIR=$XDG_CACHE_HOME/deno
 # Rust settings
@@ -35,6 +37,7 @@ export EDITOR=nvim
 # PATH
 path=(
   $CARGO_HOME/bin # cargo install binaries
+  $BUN_INSTALL_BIN # bun install -g binaries
   $path
 )
 # Deduplicate PATH entries
