@@ -82,6 +82,7 @@ in
         lua-language-server # Lua language server
         marksman # Markdown language server
         nixd # Nix language server
+        panache # Markdown/Quarto/R Markdown language server, formatter, and linter
         rust-analyzer # Rust language server
         sqls # SQL language server
         typescript-language-server # TypeScript/JavaScript language server
