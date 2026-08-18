@@ -25,8 +25,6 @@ in
     "codex/AGENTS.md".source = mkLink "agents/AGENTS.md";
     # cspell (referenced from VSCode settings etc.)
     "cspell".source = mkLink "config/cspell";
-    # Cmux
-    "cmux".source = mkLink "config/cmux";
     # Ghostty
     "ghostty".source = mkLink "config/ghostty";
     # Zsh

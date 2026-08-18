@@ -16,10 +16,6 @@
       extraEnv.XDG_CONFIG_HOME = "${homedir}/.config";
     };
 
-    taps = [
-      "manaflow-ai/cmux"
-    ];
-
     brews = [
       "mas"
     ];
@@ -34,7 +30,6 @@
       "google-chrome"
       # Terminal
       "ghostty"
-      "cmux"
       # Note
       "obsidian"
       # Utilities
