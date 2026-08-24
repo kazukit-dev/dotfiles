@@ -14,6 +14,8 @@ export PYTHON_HISTORY=$XDG_STATE_HOME/python/history
 export NODE_REPL_HISTORY=$XDG_STATE_HOME/node/repl_history
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export NPM_CONFIG_CACHE=$XDG_CACHE_HOME/npm
+# pnpm settings
+export PNPM_HOME=$XDG_DATA_HOME/pnpm
 # uv settings
 export UV_CACHE_DIR=$XDG_CACHE_HOME/uv
 export UV_PYTHON_INSTALL_DIR=$XDG_DATA_HOME/uv/python
@@ -38,6 +40,7 @@ export EDITOR=nvim
 path=(
   $CARGO_HOME/bin # cargo install binaries
   $BUN_INSTALL_BIN # bun install -g binaries
+  $PNPM_HOME/bin # pnpm add -g binaries
   $path
 )
 # Deduplicate PATH entries
