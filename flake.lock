@@ -368,11 +368,11 @@
     "mizchi-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1789096802,
-        "narHash": "sha256-RNNdQHCoFaZFbZXsUlo+CthOF6HpEnVaMWwJMxNMO9Y=",
+        "lastModified": 1790927348,
+        "narHash": "sha256-td6husEnA0cqdgfyROdjFpVOhWv44EfJIvi+gGY13YU=",
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "66dadd9613719251c1501ba482c08cbd7f55ffee",
+        "rev": "62f580819410cb1d398e4d7f234bbd0aad1c1a15",
         "type": "github"
       },
       "original": {
