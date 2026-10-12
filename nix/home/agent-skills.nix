@@ -26,7 +26,6 @@ _: {
 
       mizchi = {
         input = "mizchi-skills";
-        subdir = "meta";
       };
 
       my-skills = {
