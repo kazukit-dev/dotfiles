@@ -28,6 +28,11 @@ _: {
         input = "mizchi-skills";
       };
 
+      yomiyasu = {
+        input = "yomiyasu-skills";
+        subdir = "skills";
+      };
+
       my-skills = {
         path = ../../agents/skills;
       };
@@ -38,6 +43,7 @@ _: {
         "ast-grep"
         "anthropic"
         "agent-browser"
+        "yomiyasu"
         "my-skills"
       ];
 

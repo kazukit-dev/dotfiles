@@ -72,6 +72,10 @@
       url = "github:mizchi/skills";
       flake = false;
     };
+    yomiyasu-skills = {
+      url = "github:nanaism/yomiyasu";
+      flake = false;
+    };
   };
 
   outputs =
