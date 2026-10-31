@@ -61,10 +61,7 @@
       "Read(~/.aws/**)",
       "Edit(**/.env*)",
       "Edit(~/.ssh/**)",
-      "Edit(~/.aws/**)",
-      "Write(**/.env*)",
-      "Write(~/.ssh/**)",
-      "Write(~/.aws/**)"
+      "Edit(~/.aws/**)"
     ],
     "ask": [
       "Bash(git push *)",
@@ -79,6 +76,8 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus",
+  "tui": "fullscreen",
   "statusLine": {
     "type": "command",
     "command": "~/.config/claude/statusline.sh"
