@@ -23,9 +23,7 @@
     casks = [
       # Password manager
       "1password"
-      # Beta until 1password-cli stable 2.33.1+ ships a fix for the desktop
-      # integration regression (https://github.com/1Password/shell-plugins/issues/587).
-      "1password-cli@beta"
+      "1password-cli"
       # Browser
       "google-chrome"
       # Terminal
