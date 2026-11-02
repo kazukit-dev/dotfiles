@@ -40,13 +40,8 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Temporarily unpinned to pick up brew 5.1.x, which fixes the cask API
-    # "undefined method 'first' for nil" crash in generate_cask_struct_hash.
-    # The previous pin (a5409abd, 2026-01-26) existed to avoid masApps install
-    # failure (https://github.com/zhaofengli/nix-homebrew/issues/131); that
-    # issue is still open, so we work around it with
-    # `homebrew.onActivation.autoUpdate = false` in nix/darwin/homebrew.nix.
-    # Re-pin or drop the workaround once #131 is fixed upstream.
+    # Left unpinned on purpose: nix-homebrew#131 is worked around in
+    # nix/darwin/homebrew.nix (autoUpdate = false) instead of pinning an old brew.
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     flake-parts.url = "github:hercules-ci/flake-parts";
