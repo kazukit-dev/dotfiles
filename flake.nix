@@ -143,10 +143,6 @@
             gitleaks = {
               enable = true;
               verbose = true;
-              name = "gitleaks";
-              description = "Detect hardcoded secrets";
-              entry = "${pkgs.gitleaks}/bin/gitleaks git --verbose --redact --pre-commit --staged";
-              pass_filenames = false;
             };
           };
 
