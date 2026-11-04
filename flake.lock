@@ -398,6 +398,22 @@
         "type": "github"
       }
     },
+    "natural-japanese-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793847749,
+        "narHash": "sha256-TOXDd5z+ouGbNQoIqERC/Lm1tEKkwguyAq/1Wf02N1o=",
+        "owner": "coji",
+        "repo": "natural-japanese",
+        "rev": "1fb57128a2f0d160e61320154226fdc86343ee2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "coji",
+        "repo": "natural-japanese",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "bdwgc": "bdwgc",
@@ -646,12 +662,12 @@
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "mizchi-skills": "mizchi-skills",
+        "natural-japanese-skills": "natural-japanese-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_6",
-        "treefmt-nix": "treefmt-nix_2",
-        "yomiyasu-skills": "yomiyasu-skills"
+        "treefmt-nix": "treefmt-nix_2"
       }
     },
     "systems": {
@@ -705,22 +721,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "yomiyasu-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1793326902,
-        "narHash": "sha256-9cGUSvLgc1+996i3lWQuQm1aTWOxSY6fbS9+vn5aElw=",
-        "owner": "nanaism",
-        "repo": "yomiyasu",
-        "rev": "29d67ccb05e370b5958d72920a9cd1aa829dee80",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nanaism",
-        "repo": "yomiyasu",
         "type": "github"
       }
     }

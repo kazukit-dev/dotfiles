@@ -67,8 +67,8 @@
       url = "github:mizchi/skills";
       flake = false;
     };
-    yomiyasu-skills = {
-      url = "github:nanaism/yomiyasu";
+    natural-japanese-skills = {
+      url = "github:coji/natural-japanese";
       flake = false;
     };
   };

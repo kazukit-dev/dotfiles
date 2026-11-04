@@ -28,8 +28,8 @@ _: {
         input = "mizchi-skills";
       };
 
-      yomiyasu = {
-        input = "yomiyasu-skills";
+      natural-japanese = {
+        input = "natural-japanese-skills";
         subdir = "skills";
       };
 
@@ -43,7 +43,7 @@ _: {
         "ast-grep"
         "anthropic"
         "agent-browser"
-        "yomiyasu"
+        "natural-japanese"
         "my-skills"
       ];
 
