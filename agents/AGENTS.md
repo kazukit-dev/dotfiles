@@ -53,6 +53,7 @@ Do not rewrite existing code just to conform to these rules unless refactoring w
     → These belong in the commit message
   - Restatements of a type or an argument name
 - Write comments in Japanese.
+  Polish the wording with the `natural-japanese` skill.
 - JSDoc on public APIs is an accepted exception.
 
 ### Test
@@ -70,6 +71,7 @@ Do not rewrite existing code just to conform to these rules unless refactoring w
 - Do not depend on time, randomness, or execution order. Inject fixed values when needed.
 - The comment rules apply to test code as well. Express what is being verified in the test name.
 - Write test names in Japanese.
+  Polish the wording with the `natural-japanese` skill.
 
 ### JavaScript / TypeScript
 
