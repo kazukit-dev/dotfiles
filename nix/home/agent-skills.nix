@@ -33,6 +33,11 @@ _: {
         subdir = "skills";
       };
 
+      herdr = {
+        input = "herdr-skills";
+        subdir = "skills";
+      };
+
       my-skills = {
         path = ../../agents/skills;
       };
@@ -44,6 +49,7 @@ _: {
         "anthropic"
         "agent-browser"
         "natural-japanese"
+        "herdr"
         "my-skills"
       ];
 

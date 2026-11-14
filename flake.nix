@@ -71,6 +71,10 @@
       url = "github:coji/natural-japanese";
       flake = false;
     };
+    herdr-skills = {
+      url = "github:herdrdev/herdr";
+      flake = false;
+    };
   };
 
   outputs =

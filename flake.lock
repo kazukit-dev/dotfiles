@@ -340,6 +340,22 @@
         "type": "github"
       }
     },
+    "herdr-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793278609,
+        "narHash": "sha256-0B58jR/v1vxbK7cwoq++SnOCsED0sHDkgqVMvsrjezE=",
+        "owner": "herdrdev",
+        "repo": "herdr",
+        "rev": "ee5bfb5041bb3e4a49d591c72308aae3c81ecdde",
+        "type": "github"
+      },
+      "original": {
+        "owner": "herdrdev",
+        "repo": "herdr",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -659,6 +675,7 @@
         "determinate": "determinate",
         "flake-parts": "flake-parts_2",
         "git-hooks-nix": "git-hooks-nix_2",
+        "herdr-skills": "herdr-skills",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "mizchi-skills": "mizchi-skills",
