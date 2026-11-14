@@ -105,16 +105,23 @@ _: {
       };
     };
 
+    # rsync --delete で同期するので、Claude アプリが skills/synced に置くスキルと
+    # Codex の .system は、除外しておかないと消される
+    excludePatterns = [
+      "/.system"
+      "/synced"
+    ];
+
     targets = {
       claude = {
         enable = true;
-        dest = ".config/claude/skills";
+        dest = "~/.config/claude/skills";
         structure = "symlink-tree";
       };
 
       codex = {
         enable = true;
-        dest = ".config/codex/skills";
+        dest = "~/.config/codex/skills";
         structure = "symlink-tree";
       };
     };
