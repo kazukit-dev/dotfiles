@@ -11,6 +11,8 @@
     stateVersion = "25.11";
     inherit username;
     homeDirectory = homedir;
+    # programs.codex は、これが true のときだけ CODEX_HOME（~/.config/codex）に書き込む
+    preferXdgDirectories = true;
   };
   imports = [
     inputs.nix-index-database.homeModules.nix-index
@@ -18,6 +20,7 @@
     ./dotfiles.nix
     ./packages.nix
     ./agent-skills.nix
+    ./codex.nix
   ];
 
   programs = {
