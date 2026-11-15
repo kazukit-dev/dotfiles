@@ -17,6 +17,12 @@ command = "bash ~/.config/herdr/scripts/apply-layout.sh dev"
 description = "apply dev layout"
 
 [[keys.command]]
+key = "prefix+shift+t"
+type = "shell"
+command = "bash ~/.config/herdr/scripts/start-team.sh"
+description = "start team leader"
+
+[[keys.command]]
 key = "prefix+u"
 type = "shell"
 command = "bash ~/.config/herdr/scripts/focus-unread-agent.sh"

@@ -1,0 +1,17 @@
+{
+  "tab_label": "team",
+  "root": {
+    "type": "split",
+    "direction": "right",
+    "ratio": 0.4,
+    "first": {
+      "type": "pane",
+      "label": "editor",
+      "command": ["nvim", "."]
+    },
+    "second": {
+      "type": "pane",
+      "label": "leader"
+    }
+  }
+}

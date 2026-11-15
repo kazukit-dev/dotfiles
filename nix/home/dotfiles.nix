@@ -49,5 +49,6 @@ in
     "herdr/config.toml".source = mkLink "config/herdr/config.toml";
     "herdr/layouts".source = mkLink "config/herdr/layouts";
     "herdr/scripts".source = mkLink "config/herdr/scripts";
+    "herdr/prompts".source = mkLink "config/herdr/prompts";
   };
 }
