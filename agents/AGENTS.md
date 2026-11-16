@@ -35,6 +35,8 @@ Collect subagent results, synthesize them, and report back concisely.
 
 ## Code style
 
+When working on code (implementing, changing, fixing bugs, refactoring, writing tests, or reviewing), load the `kazuki-mode` skill first and follow it.
+
 Follow the rules below when writing new code or editing existing code.
 When a rule conflicts with the existing style of the file being edited or of the modules it directly depends on, follow the existing style instead.
 Do not rewrite existing code just to conform to these rules unless refactoring was explicitly requested.
@@ -53,8 +55,6 @@ Do not rewrite existing code just to conform to these rules unless refactoring w
   When a test fails, decide whether the implementation or the test's premise is wrong, and report it with the reasoning.
 - Do not depend on time, randomness, or execution order. Inject fixed values when needed.
 - Express what is being verified in the test name, not in comments.
-- Write test names in Japanese.
-  Polish the wording with the `natural-japanese` skill.
 
 ### JavaScript / TypeScript
 
