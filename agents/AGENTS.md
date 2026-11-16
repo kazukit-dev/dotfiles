@@ -39,23 +39,6 @@ Follow the rules below when writing new code or editing existing code.
 When a rule conflicts with the existing style of the file being edited or of the modules it directly depends on, follow the existing style instead.
 Do not rewrite existing code just to conform to these rules unless refactoring was explicitly requested.
 
-### Comment
-
-- As a rule, do not write comments. Aim for code whose intent is conveyed by the code and its naming.
-- Write comments only for what cannot be read from the code:
-  - Why this implementation was chosen (why the obvious alternatives were rejected)
-  - Constraints of external specs or APIs, workarounds for known bugs and their references
-  - Why code that looks unnecessary or unnatural is in fact required
-  - A summary of dense passages whose intent is unreadable, such as regular expressions or bit manipulation
-- Do not write:
-  - A play-by-play of the processing (e.g. "fetch the user information")
-  - Change history or diff explanations (e.g. "fixed this", "previously it was ...")
-    → These belong in the commit message
-  - Restatements of a type or an argument name
-- Write comments in Japanese.
-  Polish the wording with the `natural-japanese` skill.
-- JSDoc on public APIs is an accepted exception.
-
 ### Test
 
 - Tests verify behavior. Exercise the target only through its public interface, and do not assert on internal steps or intermediate state.
@@ -69,7 +52,7 @@ Do not rewrite existing code just to conform to these rules unless refactoring w
 - Do not delete or skip existing tests, and do not weaken assertions to make them pass.
   When a test fails, decide whether the implementation or the test's premise is wrong, and report it with the reasoning.
 - Do not depend on time, randomness, or execution order. Inject fixed values when needed.
-- The comment rules apply to test code as well. Express what is being verified in the test name.
+- Express what is being verified in the test name, not in comments.
 - Write test names in Japanese.
   Polish the wording with the `natural-japanese` skill.
 
