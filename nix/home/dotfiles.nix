@@ -19,12 +19,12 @@ in
     "1Password/ssh".source = mkLink "config/1Password/ssh";
     # Claude Code
     "claude/CLAUDE.md".source = mkLink "agents/AGENTS.md";
-    "claude/agents".source = mkLink "agents/agents/claude";
+    "claude/agents".source = mkLink "agents/agents";
     "claude/settings.json".source = mkLink "config/claude/settings.json";
     "claude/statusline.sh".source = mkLink "config/claude/statusline.sh";
     # Codex
     "codex/AGENTS.md".source = mkLink "agents/AGENTS.md";
-    "codex/agents".source = mkLink "agents/agents/codex";
+    "codex/agents".source = mkLink "agents/agents";
     # cspell (referenced from VSCode settings etc.)
     "cspell".source = mkLink "config/cspell";
     # Ghostty
