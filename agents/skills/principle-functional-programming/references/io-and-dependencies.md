@@ -203,7 +203,6 @@ app.post("/orders", async (req, res) => res.json(await placeOrder(req.body)));
 
 依存の組み立てが1か所に集まっていると、どの処理が何に依存しているかを見渡せる。
 インテグレーションテストでも同じ組み立て方で本物の依存を渡せる。
-テストダブルを使うかどうかは `principle-testing` スキルに従う。
 
 ## 避ける書き方
 

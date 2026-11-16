@@ -83,7 +83,6 @@ Result 型のような汎用の型を使うか、失敗を表す状態の型を�
 | ドメインモデルや業務フローを設計する、型を決める | [references/domain-modeling.md](references/domain-modeling.md) |
 | I/O と純粋な処理を分ける、依存を注入する、エントリポイントを組み立てる | [references/io-and-dependencies.md](references/io-and-dependencies.md) |
 
-テストの書き方は `principle-testing` スキルに従う。
 純粋関数は出力値ベーステストで、I/O を含む端の処理はインテグレーションテストで検証する。
 
 ## 実装するときの手順
