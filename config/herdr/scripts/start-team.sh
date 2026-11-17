@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # team レイアウトを今のタブに適用して leader を起動し、役割の初期プロンプトを送る。
-# worker / reviewer / consultant は、leader が必要なときに起動して閉じる。
+# reviewer / consultant は、leader が必要なときに起動して閉じる。worker は leader のサブエージェントが担う。
 # layout.apply のペインには agent の名前を付けられないので、空のシェルペインを
 # 作ってから herdr agent start で起動している。
 set -euo pipefail
@@ -44,7 +44,6 @@ $started || {
 herdr agent wait "$(name leader)" --until idle --timeout 300000 >/dev/null
 
 prompt="$(sed \
-  -e "s/{{worker}}/$(name worker)/g" \
   -e "s/{{reviewer}}/$(name reviewer)/g" \
   -e "s/{{consultant}}/$(name consultant)/g" \
   "$prompt_file")"
