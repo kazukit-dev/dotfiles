@@ -17,6 +17,12 @@ _: {
       approvals_reviewer = "auto_review";
       approval_policy = "on-request";
       sandbox_mode = "workspace-write";
+
+      # ローカルの otel-lgtm（nix run .#lgtm）に送る。プロンプトの本文は送らない
+      otel = {
+        exporter.otlp-grpc.endpoint = "http://localhost:4317";
+        log_user_prompt = false;
+      };
     };
   };
 }

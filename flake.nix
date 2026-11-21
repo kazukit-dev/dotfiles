@@ -179,6 +179,23 @@
                 ''
               );
             };
+            lgtm = {
+              type = "app";
+              meta.description = "Start the local Grafana OTel LGTM stack (args are passed to docker compose)";
+              program = toString (
+                pkgs.writeShellScript "lgtm" ''
+                  set -e
+                  colima status >/dev/null 2>&1 || colima start
+                  if [ "$#" -eq 0 ]; then
+                    set -- up -d
+                  fi
+                  docker compose -f ${./config/otel-lgtm/compose.yaml} "$@"
+                  if [ "$1" = "up" ]; then
+                    echo "Grafana: http://localhost:3000 (admin / admin)"
+                  fi
+                ''
+              );
+            };
             secrets = {
               type = "app";
               meta.description = "Run gitleaks on entire repository";

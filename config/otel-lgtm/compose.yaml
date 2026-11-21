@@ -1,0 +1,15 @@
+# Claude Code と Codex の OpenTelemetry を受けて Grafana で見るためのローカル環境。
+# 起動と停止は `nix run .#lgtm`（停止は `nix run .#lgtm -- down`）。
+name: otel-lgtm
+services:
+  lgtm:
+    image: grafana/otel-lgtm:latest
+    ports:
+      # 外から送り込まれないよう、localhost にだけ公開する
+      - "127.0.0.1:3000:3000" # Grafana
+      - "127.0.0.1:4317:4317" # OTLP gRPC
+      - "127.0.0.1:4318:4318" # OTLP HTTP
+    volumes:
+      - lgtm-data:/data
+volumes:
+  lgtm-data:
