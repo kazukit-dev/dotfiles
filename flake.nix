@@ -75,6 +75,10 @@
       url = "github:herdrdev/herdr";
       flake = false;
     };
+    vercel-skills = {
+      url = "github:vercel-labs/agent-skills";
+      flake = false;
+    };
   };
 
   outputs =

@@ -684,7 +684,8 @@
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_6",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "vercel-skills": "vercel-skills"
       }
     },
     "systems": {
@@ -738,6 +739,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "vercel-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795202386,
+        "narHash": "sha256-gGacyJJnu1wf2y1CKGVjIyVbTOBnkly2ouYQSbgPb0E=",
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "rev": "5a37a6329fbad3666c3207392a6a7c0110e92efb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
         "type": "github"
       }
     }
