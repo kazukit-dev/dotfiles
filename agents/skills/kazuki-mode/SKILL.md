@@ -5,7 +5,7 @@ description: |-
   コードを書く・実装する・修正する・バグを直す・リファクタリングする・テストを書く・レビューするなど、コードに関わる作業をするときは必ずこのスキルを使うこと。「kazuki-mode で」「いつもの原則で」と言われたときにも使う。
 metadata:
   author: kazukit
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Kazuki Mode
@@ -36,6 +36,13 @@ kazuki がコードを書くときに意識している原則は、principle 系
 | コードをレビューする | 対象に応じて上の行から選ぶ。テストコードだけなら `principle-testing`、コメントだけなら `principle-code-comment` |
 
 `principle-functional-programming` は、対象のプロジェクトがクラスを中心に書かれている場合は関数型の書き方を持ち込まない、と自身で定めている。読み込んだうえで、その判断に従う。
+
+## React のコードを書くとき
+
+`principle-functional-programming` の書き方と React の書き方が食い違うときは、次のように線を引く。
+React のコンポーネントと hooks では、React の制約と慣習に従う。依存注入のためだけに hooks や context をカリー化へ置き換えない。
+業務の型や状態遷移は、可能な範囲で React から独立した純粋関数にする。
+プロジェクトの既存の書き方を最優先にするのは、「原則どうしの優先順位」のとおり。
 
 ## 日本語で書くとき
 
