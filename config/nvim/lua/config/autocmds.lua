@@ -16,3 +16,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = args.buf, desc = "Rename symbol" })
   end,
 })
+
+-- Reload buffers changed outside Neovim
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "TermLeave", "CursorHold" }, {
+  group = vim.api.nvim_create_augroup("checktime", { clear = true }),
+  callback = function()
+    if vim.fn.getcmdwintype() ~= "" or vim.bo.buftype == "nofile" then
+      return
+    end
+    vim.cmd("checktime")
+  end,
+})
