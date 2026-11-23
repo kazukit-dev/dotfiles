@@ -16,6 +16,8 @@ let
   leaf = pkgs.writeShellScriptBin "leaf" ''
     exec ${pkgs.bun}/bin/bunx @rivolink/leaf "$@"
   '';
+  quint-language-server = pkgs.callPackage ../pkgs/quint-language-server.nix { };
+  tree-sitter-quint = pkgs.tree-sitter-grammars.tree-sitter-quint;
 in
 {
   home = {
@@ -53,6 +55,9 @@ in
         rustfmt # Rust code formatter
         clippy # Rust linter
 
+        # Formal Methods
+        quint # Quint specification language CLI
+
         # Shell
         zsh # Z shell
         starship # Cross-shell prompt
@@ -83,6 +88,7 @@ in
         marksman # Markdown language server
         nixd # Nix language server
         panache # Markdown/Quarto/R Markdown language server, formatter, and linter
+        quint-language-server # Quint language server
         rust-analyzer # Rust language server
         sqls # SQL language server
         typescript-language-server # TypeScript/JavaScript language server
@@ -109,5 +115,12 @@ in
         herdr # Terminal workspace manager for AI coding agents
         agent-browser # Headless browser
       ]);
+  };
+
+  # nvim-treesitter has no Quint parser, so install the nixpkgs grammar into
+  # the same site directory that nvim-treesitter uses as its install_dir.
+  xdg.dataFile = {
+    "nvim/site/parser/quint.so".source = "${tree-sitter-quint}/parser";
+    "nvim/site/queries/quint/highlights.scm".source = "${tree-sitter-quint}/queries/highlights.scm";
   };
 }

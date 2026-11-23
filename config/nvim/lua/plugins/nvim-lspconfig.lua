@@ -18,6 +18,7 @@ return {
         "nixd",
         "oxlint",
         "panache",
+        "quint",
         "rust_analyzer",
         "sqls",
         "ts_ls",

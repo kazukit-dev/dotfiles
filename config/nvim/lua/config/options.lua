@@ -23,6 +23,12 @@ opt.undofile = true
 opt.scrolloff = 8
 opt.updatetime = 250
 
+vim.filetype.add({
+  extension = {
+    qnt = "quint",
+  },
+})
+
 vim.diagnostic.config({
   virtual_text = {
     format = function(diagnostic)
