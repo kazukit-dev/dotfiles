@@ -18,17 +18,6 @@ color_for_percent() {
   fi
 }
 
-format_tokens() {
-  local n=$1
-  if ((n >= 1000000)); then
-    printf '%d.%dM' $((n / 1000000)) $((n % 1000000 / 100000))
-  elif ((n >= 1000)); then
-    printf '%dk' $((n / 1000))
-  else
-    printf '%d' "$n"
-  fi
-}
-
 format_duration_seconds() {
   local s=$1
   if ((s >= 86400)); then
@@ -78,7 +67,7 @@ git_segment() {
 input=$(cat)
 
 # IFS is not a tab: whitespace IFS merges consecutive separators, so an empty field would shift every later value.
-IFS=$'\x1f' read -r project_dir current_dir model used_pct tokens \
+IFS=$'\x1f' read -r project_dir current_dir model used_pct \
   five_pct five_reset seven_pct seven_reset <<<"$(
     jq -r '
 			def int: if . == null then "" else floor end;
@@ -87,11 +76,6 @@ IFS=$'\x1f' read -r project_dir current_dir model used_pct tokens \
 				(.workspace.current_dir // .cwd // ""),
 				(.model.display_name // .model.id // ""),
 				(.context_window.used_percentage | int),
-				(.context_window.current_usage
-					| if . == null then ""
-					  else (.input_tokens // 0) + (.output_tokens // 0)
-					     + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0)
-					  end),
 				(.rate_limits.five_hour.used_percentage | int),
 				(.rate_limits.five_hour.resets_at | int),
 				(.rate_limits.seven_day.used_percentage | int),
@@ -112,7 +96,6 @@ segments=()
 
 if [[ -n $used_pct ]]; then
   ctx="ctx $(color_for_percent "$used_pct")$(format_bar "$used_pct") ${used_pct}%${RESET}"
-  [[ -n $tokens && $tokens != 0 ]] && ctx+=" ($(format_tokens "$tokens"))"
   segments+=("$ctx")
 fi
 
