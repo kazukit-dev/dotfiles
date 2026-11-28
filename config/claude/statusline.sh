@@ -78,8 +78,8 @@ git_segment() {
 input=$(cat)
 
 # IFS is not a tab: whitespace IFS merges consecutive separators, so an empty field would shift every later value.
-IFS=$'\x1f' read -r project_dir current_dir model used_pct tokens duration_ms \
-  five_pct five_reset seven_pct seven_reset effort <<<"$(
+IFS=$'\x1f' read -r project_dir current_dir model used_pct tokens \
+  five_pct five_reset seven_pct seven_reset <<<"$(
     jq -r '
 			def int: if . == null then "" else floor end;
 			[
@@ -92,12 +92,10 @@ IFS=$'\x1f' read -r project_dir current_dir model used_pct tokens duration_ms \
 					  else (.input_tokens // 0) + (.output_tokens // 0)
 					     + (.cache_creation_input_tokens // 0) + (.cache_read_input_tokens // 0)
 					  end),
-				(.cost.total_duration_ms | int),
 				(.rate_limits.five_hour.used_percentage | int),
 				(.rate_limits.five_hour.resets_at | int),
 				(.rate_limits.seven_day.used_percentage | int),
-				(.rate_limits.seven_day.resets_at | int),
-				(.effort.level // "")
+				(.rate_limits.seven_day.resets_at | int)
 			] | map(tostring) | join("\u001f")
 		' <<<"$input" 2>/dev/null
   )"
@@ -118,8 +116,6 @@ if [[ -n $used_pct ]]; then
   segments+=("$ctx")
 fi
 
-[[ -n $duration_ms ]] && segments+=("$(format_duration_seconds $((duration_ms / 1000)))")
-
 if [[ -n $five_pct || -n $seven_pct ]]; then
   now=$(date +%s)
   limits=()
@@ -129,8 +125,6 @@ if [[ -n $five_pct || -n $seven_pct ]]; then
   ((${#limits[@]} > 1)) && rate+=" / ${limits[1]}"
   segments+=("$rate")
 fi
-
-[[ -n $effort ]] && segments+=("effort:${effort}")
 
 line2=""
 for segment in "${segments[@]+"${segments[@]}"}"; do
