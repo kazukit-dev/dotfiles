@@ -15,7 +15,9 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # Not nixos-unstable from GitHub: that would lock revisions with no cooldown.
+    # Determinate's nixpkgs-weekly only ships revisions public for 7+ days.
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
     home-manager = {
