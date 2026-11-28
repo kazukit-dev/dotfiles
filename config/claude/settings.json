@@ -1,74 +1,63 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "allow": [
-      "Bash(git status)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git show *)",
-      "Bash(git branch)",
-      "Bash(git branch -l *)",
-      "Bash(git remote -v)",
-      "Bash(git add *)",
-      "Bash(git push *)",
-      "Bash(ls *)",
-      "Bash(pwd)",
-      "Bash(cd *)",
-      "Bash(tree *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(wc *)",
-      "Bash(gh pr view *)",
-      "Bash(gh pr list *)",
-      "Bash(gh pr diff *)",
-      "Bash(gh pr checks *)",
-      "Bash(gh pr status *)",
-      "Bash(gh issue view *)",
-      "Bash(gh issue list *)",
-      "Bash(gh issue status *)",
-      "Bash(gh repo view *)",
-      "Bash(gh repo list *)",
-      "Bash(gh release view *)",
-      "Bash(gh release list *)",
-      "Bash(gh run view *)",
-      "Bash(gh run list *)",
-      "Bash(gh run watch *)",
-      "Bash(gh workflow view *)",
-      "Bash(gh workflow list *)",
-      "Bash(gh search *)",
-      "Bash(gh label list *)",
-      "Bash(gh gist view *)",
-      "Bash(gh gist list *)",
-      "Bash(gh status)",
-      "Bash(gh auth status)",
-      "Bash(gh config get *)",
-      "Bash(gh config list)",
-      "Bash(gh browse *)"
-    ],
     "deny": [
-      "Bash(sudo *)",
-      "Bash(curl *)",
-      "Bash(chmod *)",
-      "Bash(git push *--force*)",
-      "Bash(git push -f*)",
-      "Bash(git push * -f*)",
-      "Bash(git push * +*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/*.pem)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr merge *)",
       "Bash(git reset --hard *)",
       "Bash(git clean -f *)",
-      "Bash(git clean -fd *)",
-      "Bash(git clone *)",
-      "Read(**/id_rsa)",
-      "Read(**/id_ed25519)",
-      "Read(**/.env*)",
-      "Read(~/.ssh/**)",
-      "Read(~/.aws/**)",
-      "Edit(**/.env*)",
-      "Edit(~/.ssh/**)",
-      "Edit(~/.aws/**)"
+      "Bash(git clean -fd *)"
     ],
-    "ask": ["Bash(rm *)"],
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "disableBypassPermissionsMode": "disable"
   },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "codeload.github.com",
+        "flakehub.com",
+        "api.flakehub.com",
+        "flake-archives.flakehub.com",
+        "registry.npmjs.org",
+        "pypi.org",
+        "files.pythonhosted.org"
+      ],
+      "allowUnixSockets": [
+        "/private/var/run/nix-daemon.socket",
+        "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock",
+        "~/.config/herdr/herdr.sock"
+      ],
+      "allowMachLookup": ["com.apple.trustd.agent"]
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.cache/nix",
+        "~/.cache/treefmt",
+        "~/.cache/pre-commit",
+        "~/.cache/npm",
+        "~/.cache/pnpm",
+        "~/.local/share/pnpm/store",
+        "~/.cache/bun",
+        "~/.cache/uv",
+        "~/.local/share/uv"
+      ],
+      "allowRead": ["~/.ssh/config", "~/.ssh/known_hosts"]
+    }
+  },
+  "cleanupPeriodDays": 14,
   "model": "opus",
   "tui": "fullscreen",
   "statusLine": {
