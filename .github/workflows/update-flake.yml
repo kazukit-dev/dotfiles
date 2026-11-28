@@ -41,7 +41,8 @@ jobs:
       - uses: ./.github/actions/update-flake
         with:
           input: ${{ matrix.input }}
-          min-release-days: "3"
+          # nixpkgs-weekly already holds revisions back for 7 days, so CI does not wait again for nixpkgs
+          min-release-days: ${{ matrix.input == 'nixpkgs' && '0' || '3' }}
           pr-app-id: ${{ vars.PULL_REQUEST_APP_ID }}
           pr-app-private-key: ${{ secrets.PULL_REQUEST_APP_PRIVATE_KEY }}
           auto-merge: "true"
